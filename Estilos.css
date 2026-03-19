@@ -1,6 +1,6 @@
 /* FONDO */
 body{
-    background: linear-gradient(135deg, #1a1740, #2d2a5f);
+    background: linear-gradient(135deg, #2b275a, #3b3770);
     color: white;
     font-family: Arial, sans-serif;
 }
@@ -11,13 +11,7 @@ body{
     justify-content:center;
     gap:30px;
     padding:15px;
-    background:#0b0b1f;
-}
-
-.navbar-pro a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
+    background:#0d0d2b;
 }
 
 /* HEADER */
@@ -31,14 +25,14 @@ header img{
     width:120px;
     height:120px;
     border-radius:50%;
-    border:3px solid #00ffd5;
-    box-shadow:0 0 20px #00ffd5;
+    border:3px solid #6cf0ff;
+    box-shadow:0 0 15px #6cf0ff;
 }
 
 /* NOMBRE */
 header h1{
-    color:#cfffff;
-    text-shadow:0 0 15px #00ffd5;
+    color:#d7f9ff;
+    text-shadow:0 0 12px #6cf0ff;
 }
 
 /* BOTONES REDES */
@@ -46,14 +40,10 @@ header h1{
     margin:10px;
     padding:10px 20px;
     border-radius:25px;
-    background: linear-gradient(90deg, #00ffd5, #7a5cff);
+    background: linear-gradient(90deg, #2bd2c9, #7b4dff);
     color:white;
     text-decoration:none;
     transition:0.3s;
-}
-
-.social-btn:hover{
-    transform:scale(1.1);
 }
 
 /* CONTENIDO */
@@ -63,7 +53,7 @@ main{
     align-items:center;
 }
 
-/* SECCIONES (CAJAS CON GLOW) */
+/* CAJAS (GLOW SUAVE COMO TU IMAGEN) */
 main section{
     width:80%;
     max-width:900px;
@@ -73,13 +63,13 @@ main section{
     background: rgba(255,255,255,0.05);
 
     box-shadow:
-        0 0 15px #00ffd5,
-        0 0 30px #00ffd5;
+        0 0 12px #2bd2c9,
+        0 0 25px rgba(43,210,201,0.5);
 }
 
 /* TITULOS */
 h2{
-    border-left:5px solid #00ffd5;
+    border-left:5px solid #2bd2c9;
     padding-left:10px;
 }
 
@@ -90,17 +80,18 @@ input, textarea, select{
     padding:10px !important;
 }
 
-/* BOTONES (IMPORTANTE 🔥) */
+/* BOTONES (LOS IMPORTANTES 🔥) */
 button{
     border:none;
     padding:12px;
     border-radius:25px;
-    background: linear-gradient(90deg, #00ffd5, #7a5cff);
+    background: linear-gradient(90deg, #2bd2c9, #7b4dff);
     color:white;
     font-weight:bold;
     transition:0.3s;
 }
 
+/* HOVER */
 button:hover{
     transform:scale(1.05);
 }
@@ -116,5 +107,5 @@ button:hover{
 /* MENSAJE */
 #mensajeEnviado{
     display:none;
-    color:#00ff88;
+    color:#2bd2c9;
 }
