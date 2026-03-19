@@ -33,6 +33,14 @@ btnTop.addEventListener("click", () => {
 }
 
 
+// ===== ACTIVAR ANIMACIONES AL CARGAR (🔥 IMPORTANTE) =====
+window.addEventListener("load", () => {
+    document.querySelectorAll(".fade-in").forEach(el => {
+        el.classList.add("visible");
+    });
+});
+
+
 // ===== RESEÑAS =====
 let reviews = [];
 
@@ -119,15 +127,20 @@ contactForm.addEventListener("submit", function(e) {
 }
 
 
-// ===== CERTIFICADOS (MODAL) =====
+// ===== CERTIFICADOS (OPCIONAL SI USAS MODAL) =====
 function verCertificado(ruta){
     const modal = document.getElementById("modalCertificado");
     const img = document.getElementById("imgCertificado");
 
-    img.src = ruta;
-    modal.style.display = "block";
+    if(modal && img){
+        img.src = ruta;
+        modal.style.display = "block";
+    }
 }
 
 function cerrarModal(){
-    document.getElementById("modalCertificado").style.display = "none";
+    const modal = document.getElementById("modalCertificado");
+    if(modal){
+        modal.style.display = "none";
+    }
 }
