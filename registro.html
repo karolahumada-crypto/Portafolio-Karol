@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Adopción Mascotas</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+  background: linear-gradient(-45deg, #6d28d9, #c084fc, #e879f9, #9333ea);
+  background-size: 400% 400%;
+  animation: fondo 10s ease infinite;
+  color:white;
+}
+
+@keyframes fondo {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+header {
+  background: linear-gradient(135deg, #4c1d95, #c084fc);
+  color: white;
+  border-radius: 0 0 30px 30px;
+}
+
+section.card {
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+}
+
+button {
+  background: linear-gradient(135deg, #9333ea, #e879f9);
+  border: none;
+  color: white;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.oculto {
+  display: none;
+}
+
+/* NUEVO: tarjetas bonitas */
+.mascota-card{
+  background: rgba(0,0,0,0.3);
+  border-radius: 15px;
+  padding: 15px;
+  margin-top: 10px;
+  display:flex;
+  gap:15px;
+  align-items:center;
+}
+
+.mascota-card img{
+  width:90px;
+  height:90px;
+  border-radius:10px;
+  object-fit:cover;
+}
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN -->
+<main class="container mt-5" id="loginSection">
+<section class="card p-4 shadow text-center">
+
+<h2>🔐 Iniciar Sesión</h2>
+
+<input type="text" id="loginUser" class="form-control mt-3" placeholder="Usuario">
+<input type="password" id="loginPass" class="form-control mt-3" placeholder="Contraseña">
+
+<button class="mt-4 w-100" onclick="login()">Entrar</button>
+
+<p class="mt-3">
+¿No tienes cuenta? 
+<a href="#" onclick="mostrarRegistro()">Regístrate</a>
+</p>
+
+<p id="loginMsg"></p>
+
+</section>
+</main>
+
+<!-- REGISTRO -->
+<main class="container mt-5 oculto" id="registroSection">
+<section class="card p-4 shadow text-center">
+
+<h2>📝 Crear Cuenta</h2>
+
+<input type="text" id="regUser" class="form-control mt-3" placeholder="Usuario">
+<input type="password" id="regPass" class="form-control mt-3" placeholder="Contraseña">
+
+<button class="mt-4 w-100" onclick="registrar()">Registrarse</button>
+
+<p class="mt-3">
+¿Ya tienes cuenta? 
+<a href="#" onclick="mostrarLogin()">Inicia sesión</a>
+</p>
+
+<p id="regMsg"></p>
+
+</section>
+</main>
+
+<!-- APP -->
+<section id="appSection" class="oculto">
+
+<header class="text-center p-4 shadow">
+  <h1>🐶 Adopción Mascotas</h1>
+  <p id="bienvenida"></p>
+  <button onclick="logout()">Cerrar sesión</button>
+</header>
+
+<main class="container mt-4">
+
+<!-- FORM ORIGINAL + NUEVO CAMPO IMAGEN -->
+<section class="card p-4 shadow">
+
+<form id="formMascota">
+<input type="hidden" id="editIndex">
+
+<input type="text" id="nombre" class="form-control mt-2" placeholder="Nombre">
+<input type="number" id="edad" class="form-control mt-2" placeholder="Edad">
+<input type="text" id="tipo" class="form-control mt-2" placeholder="Tipo">
+
+<!-- NUEVO -->
+<input type="text" id="imagen" class="form-control mt-2" placeholder="URL imagen (opcional)">
+
+<button class="mt-3 w-100">Guardar</button>
+</form>
+
+</section>
+
+<section class="mt-3">
+<input type="text" id="buscar" class="form-control" placeholder="Buscar...">
+</section>
+
+<section id="listaMascotas"></section>
+
+</main>
+
+</section>
+
+<!-- MODAL ADOPCIÓN -->
+<div class="modal fade" id="modalAdopcion">
+<div class="modal-dialog">
+<div class="modal-content bg-dark text-white">
+
+<div class="modal-header">
+<h5>Formulario de adopción 🐾</h5>
+</div>
+
+<div class="modal-body">
+<input class="form-control mb-2" placeholder="Tu nombre">
+<input class="form-control mb-2" placeholder="Teléfono">
+<textarea class="form-control" placeholder="¿Por qué quieres adoptar?"></textarea>
+</div>
+
+<div class="modal-footer">
+<button class="btn btn-success" onclick="alert('Solicitud enviada 💜')">Enviar</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+
+// USUARIOS
+let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+// VISTAS
+function mostrarRegistro(){
+loginSection.classList.add("oculto");
+registroSection.classList.remove("oculto");
+}
+
+function mostrarLogin(){
+registroSection.classList.add("oculto");
+loginSection.classList.remove("oculto");
+}
+
+// REGISTRO
+function registrar(){
+let user = regUser.value;
+let pass = regPass.value;
+
+if(user===""||pass===""){
+regMsg.textContent="❌ Completa campos";
+return;
+}
+
+if(usuarios.find(u=>u.user===user)){
+regMsg.textContent="⚠️ Ya existe";
+return;
+}
+
+usuarios.push({user,pass});
+localStorage.setItem("usuarios",JSON.stringify(usuarios));
+
+regMsg.textContent="✅ Usuario creado";
+}
+
+// LOGIN
+function login(){
+let user = loginUser.value;
+let pass = loginPass.value;
+
+let valido = usuarios.find(u=>u.user===user && u.pass===pass);
+
+if(valido){
+localStorage.setItem("usuarioActivo",user);
+iniciarApp();
+}else{
+loginMsg.textContent="❌ Datos incorrectos";
+}
+}
+
+// LOGOUT
+function logout(){
+localStorage.removeItem("usuarioActivo");
+location.reload();
+}
+
+// APP
+function iniciarApp(){
+loginSection.classList.add("oculto");
+registroSection.classList.add("oculto");
+appSection.classList.remove("oculto");
+
+bienvenida.textContent="Bienvenida "+localStorage.getItem("usuarioActivo")+" 💜";
+mostrar(mascotas);
+}
+
+// MASCOTAS
+let mascotas = JSON.parse(localStorage.getItem("mascotas")) || [];
+
+function guardar(){
+localStorage.setItem("mascotas",JSON.stringify(mascotas));
+}
+
+// MOSTRAR MEJORADO + IMAGEN + ADOPTAR
+function mostrar(listaFiltrada){
+listaMascotas.innerHTML="";
+
+listaFiltrada.forEach((m,i)=>{
+
+let img = m.img || "https://source.unsplash.com/100x100/?pet";
+
+let card=document.createElement("article");
+card.classList.add("mascota-card");
+
+card.innerHTML=`
+<img src="${img}">
+<div>
+<h5>${m.nombre}</h5>
+<p>${m.tipo} - ${m.edad} años</p>
+<button onclick="editar(${i})">Editar</button>
+<button onclick="eliminar(${i})">Eliminar</button>
+<button onclick="abrirModal()">Adoptar</button>
+</div>
+`;
+
+listaMascotas.appendChild(card);
+
+});
+}
+
+// FORM
+formMascota.addEventListener("submit",function(e){
+e.preventDefault();
+
+let mascota={
+nombre:nombre.value,
+edad:edad.value,
+tipo:tipo.value,
+img: imagen.value
+};
+
+let index=editIndex.value;
+
+if(index===""){
+mascotas.push(mascota);
+}else{
+mascotas[index]=mascota;
+}
+
+guardar();
+mostrar(mascotas);
+
+formMascota.reset();
+editIndex.value="";
+});
+
+// FUNCIONES
+function eliminar(i){
+mascotas.splice(i,1);
+guardar();
+mostrar(mascotas);
+}
+
+function editar(i){
+let m=mascotas[i];
+
+nombre.value=m.nombre;
+edad.value=m.edad;
+tipo.value=m.tipo;
+imagen.value=m.img || "";
+editIndex.value=i;
+}
+
+// BUSCADOR
+buscar.addEventListener("input",function(){
+let texto=this.value.toLowerCase();
+
+let filtradas=mascotas.filter(m=>m.nombre.toLowerCase().includes(texto));
+mostrar(filtradas);
+});
+
+// MODAL
+function abrirModal(){
+new bootstrap.Modal(document.getElementById("modalAdopcion")).show();
+}
+
+// AUTO LOGIN
+if(localStorage.getItem("usuarioActivo")){
+iniciarApp();
+}
+
+</script>
+
+</body>
+</html>
