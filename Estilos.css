@@ -1,5 +1,6 @@
+/* FONDO */
 body{
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    background: linear-gradient(135deg, #1a1740, #2d2a5f);
     color: white;
     font-family: Arial, sans-serif;
 }
@@ -12,19 +13,11 @@ body{
     padding:15px;
     background:#0b0b1f;
 }
-body{
-    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-    color: white;
-    font-family: Arial, sans-serif;
-}
 
-/* NAVBAR */
-.navbar-pro{
-    display:flex;
-    justify-content:center;
-    gap:30px;
-    padding:15px;
-    background:#0b0b1f;
+.navbar-pro a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 /* HEADER */
@@ -39,99 +32,21 @@ header img{
     height:120px;
     border-radius:50%;
     border:3px solid #00ffd5;
-    box-shadow:0 0 15px #00ffd5;
-}
-
-/* NOMBRE GLOW */
-header h1{
-    color:#cfffff;
-    text-shadow:0 0 10px #00ffd5;
-}
-
-/* BOTONES */
-.social-btn{
-    margin:10px;
-    padding:10px 20px;
-    border-radius:25px;
-    background: linear-gradient(45deg, #00ffd5, #7a5cff);
-    color:white;
-    text-decoration:none;
-}
-
-/* SECCIONES */
-main{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
-main section{
-    width:80%;
-    max-width:900px;
-    margin:30px 0;
-    padding:25px;
-    border-radius:20px;
-    background: rgba(255,255,255,0.05);
-
-    box-shadow:
-        0 0 10px #00ffd5,
-        0 0 20px #00ffd5;
-}
-
-/* TITULOS */
-h2{
-    border-left:5px solid #00ffd5;
-    padding-left:10px;
-}
-
-/* CARDS */
-.card-custom{
-    background: rgba(255,255,255,0.08);
-    padding:15px;
-    border-radius:15px;
-    margin-top:10px;
-}
-
-/* MENSAJE */
-#mensajeEnviado{
-    display:none;
-    color:#00ff88;
-}
-.navbar-pro a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-/* HEADER */
-header{
-    text-align:center;
-    margin-top:30px;
-}
-
-/* FOTO PERFIL */
-header img{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    border:3px solid #00ffd5;
-    box-shadow:0 0 15px #00ffd5;
+    box-shadow:0 0 20px #00ffd5;
 }
 
 /* NOMBRE */
 header h1{
-    margin-top:15px;
-    font-size:40px;
     color:#cfffff;
-    text-shadow:0 0 10px #00ffd5;
+    text-shadow:0 0 15px #00ffd5;
 }
 
-/* BOTONES */
+/* BOTONES REDES */
 .social-btn{
     margin:10px;
     padding:10px 20px;
     border-radius:25px;
-    background: linear-gradient(45deg, #00ffd5, #7a5cff);
+    background: linear-gradient(90deg, #00ffd5, #7a5cff);
     color:white;
     text-decoration:none;
     transition:0.3s;
@@ -141,14 +56,14 @@ header h1{
     transform:scale(1.1);
 }
 
-/* SECCIONES */
+/* CONTENIDO */
 main{
     display:flex;
     flex-direction:column;
     align-items:center;
 }
 
-/* CARDS (EL EFECTO GLOW QUE TE FALTA) */
+/* SECCIONES (CAJAS CON GLOW) */
 main section{
     width:80%;
     max-width:900px;
@@ -158,46 +73,44 @@ main section{
     background: rgba(255,255,255,0.05);
 
     box-shadow:
-        0 0 10px #00ffd5,
-        0 0 20px #00ffd5;
-
-    transition:0.3s;
-}
-
-main section:hover{
-    transform:scale(1.02);
+        0 0 15px #00ffd5,
+        0 0 30px #00ffd5;
 }
 
 /* TITULOS */
 h2{
-    margin-bottom:10px;
     border-left:5px solid #00ffd5;
     padding-left:10px;
 }
 
-/* BADGES */
-.badge{
-    margin:3px;
+/* INPUTS */
+input, textarea, select{
+    border-radius:10px !important;
+    border:none !important;
+    padding:10px !important;
 }
 
-/* PROYECTOS */
+/* BOTONES (IMPORTANTE 🔥) */
+button{
+    border:none;
+    padding:12px;
+    border-radius:25px;
+    background: linear-gradient(90deg, #00ffd5, #7a5cff);
+    color:white;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* CARDS */
 .card-custom{
     background: rgba(255,255,255,0.08);
     padding:15px;
     border-radius:15px;
     margin-top:10px;
-}
-
-/* BOTONES PROYECTO */
-.btn-juntos{
-    margin-top:10px;
-}
-
-/* FORMULARIOS */
-form{
-    display:flex;
-    flex-direction:column;
-    gap:10px;
 }
 
 /* MENSAJE */
