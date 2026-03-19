@@ -1,15 +1,7 @@
-/* FONDO */
 body{
     background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
     color: white;
     font-family: Arial, sans-serif;
-    animation: fadeIn 1.5s ease-in;
-}
-
-/* ANIMACIÓN GENERAL */
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
 }
 
 /* NAVBAR */
@@ -17,18 +9,14 @@ body{
     display:flex;
     justify-content:center;
     gap:30px;
-    padding:20px;
+    padding:15px;
+    background:#0b0b1f;
 }
 
 .navbar-pro a{
     color:white;
     text-decoration:none;
-    transition:0.3s;
-}
-
-.navbar-pro a:hover{
-    color:#00d4ff;
-    transform:scale(1.1);
+    font-weight:bold;
 }
 
 /* HEADER */
@@ -37,89 +25,99 @@ header{
     margin-top:30px;
 }
 
-/* FOTO */
+/* FOTO PERFIL */
 header img{
-    width:160px;
+    width:120px;
+    height:120px;
     border-radius:50%;
-    box-shadow:0 0 15px rgba(255,255,255,0.3);
-    transition:0.4s;
+    border:3px solid #00ffd5;
+    box-shadow:0 0 15px #00ffd5;
 }
 
-header img:hover{
-    transform:scale(1.1);
+/* NOMBRE */
+header h1{
+    margin-top:15px;
+    font-size:40px;
+    color:#cfffff;
+    text-shadow:0 0 10px #00ffd5;
 }
 
-/* BOTONES SOCIALES */
+/* BOTONES */
 .social-btn{
-    margin:5px;
-    padding:8px 15px;
-    background:white;
-    color:black;
-    border-radius:20px;
+    margin:10px;
+    padding:10px 20px;
+    border-radius:25px;
+    background: linear-gradient(45deg, #00ffd5, #7a5cff);
+    color:white;
     text-decoration:none;
     transition:0.3s;
 }
 
 .social-btn:hover{
-    background:#00d4ff;
-    color:white;
     transform:scale(1.1);
 }
 
 /* SECCIONES */
+main{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+/* CARDS (EL EFECTO GLOW QUE TE FALTA) */
 main section{
-    margin:40px auto;
-    max-width:800px;
-    text-align:center;
-    animation: fadeUp 1s ease;
-}
+    width:80%;
+    max-width:900px;
+    margin:30px 0;
+    padding:25px;
+    border-radius:20px;
+    background: rgba(255,255,255,0.05);
 
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
+    box-shadow:
+        0 0 10px #00ffd5,
+        0 0 20px #00ffd5;
 
-/* CARDS */
-.card-custom{
-    background: rgba(255,255,255,0.1);
-    padding:20px;
-    margin-top:15px;
-    border-radius:15px;
     transition:0.3s;
 }
 
-.card-custom:hover{
-    transform:translateY(-5px);
-    box-shadow:0 10px 20px rgba(0,0,0,0.5);
+main section:hover{
+    transform:scale(1.02);
 }
 
-/* BOTONES PROYECTOS */
+/* TITULOS */
+h2{
+    margin-bottom:10px;
+    border-left:5px solid #00ffd5;
+    padding-left:10px;
+}
+
+/* BADGES */
+.badge{
+    margin:3px;
+}
+
+/* PROYECTOS */
+.card-custom{
+    background: rgba(255,255,255,0.08);
+    padding:15px;
+    border-radius:15px;
+    margin-top:10px;
+}
+
+/* BOTONES PROYECTO */
 .btn-juntos{
-    padding: 5px 12px;
-    font-size: 13px;
-    margin:5px;
+    margin-top:10px;
 }
 
 /* FORMULARIOS */
 form{
-    max-width:400px;
-    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
 }
 
 /* MENSAJE */
 #mensajeEnviado{
     display:none;
-    margin-top:10px;
     color:#00ff88;
-}
-
-/* FOOTER */
-footer{
-    margin-top:50px;
 }
