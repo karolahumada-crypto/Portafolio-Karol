@@ -1,0 +1,48 @@
+body{
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: white;
+}
+
+/* NAVBAR */
+.navbar-pro{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    padding:15px;
+}
+
+.navbar-pro a{
+    color:white;
+    text-decoration:none;
+}
+
+/* BOTONES */
+.social-btn{
+    margin:5px;
+    display:inline-block;
+    padding:8px 12px;
+    background:white;
+    color:black;
+    border-radius:5px;
+    text-decoration:none;
+}
+
+/* PROYECTOS */
+.card-custom{
+    background: rgba(255,255,255,0.1);
+    padding:15px;
+    margin-top:10px;
+    border-radius:10px;
+}
+
+/* BOTONES PEQUEÑOS */
+.btn-juntos{
+    padding: 4px 10px;
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+/* MENSAJE CONTACTO */
+#mensajeEnviado{
+    display:none;
+}
