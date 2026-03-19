@@ -1,45 +1,22 @@
+html{
+    scroll-behavior: smooth;
+}
+
 body{
     background: linear-gradient(135deg, #2b275a, #3b3770);
     color: white;
-    font-family: Arial, sans-serif;
 }
 
-/* NAVBAR */
+/* NAV */
 .navbar-pro{
     display:flex;
     justify-content:center;
-    gap:30px;
+    gap:20px;
     padding:15px;
     background:#0d0d2b;
 }
 
-/* HEADER */
-header{
-    text-align:center;
-    margin-top:30px;
-}
-
-/* FOTO */
-header img{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    border:3px solid #6cf0ff;
-    box-shadow:0 0 15px #6cf0ff;
-}
-
-/* NOMBRE */
-header h1{
-    color:#d7f9ff;
-    text-shadow:0 0 12px #6cf0ff;
-}
-
-/* BOTONES */
-.social-btn{
-    margin:10px;
-    padding:10px 20px;
-    border-radius:25px;
-    background: linear-gradient(90deg, #2bd2c9, #7b4dff);
+.navbar-pro a{
     color:white;
     text-decoration:none;
 }
@@ -51,58 +28,41 @@ main{
     align-items:center;
 }
 
-main section{
+section{
     width:80%;
-    max-width:900px;
-    margin:30px 0;
-    padding:25px;
-    border-radius:20px;
+    margin:20px;
+    padding:20px;
     background: rgba(255,255,255,0.05);
-
-    box-shadow:
-        0 0 12px #2bd2c9,
-        0 0 25px rgba(43,210,201,0.5);
-}
-
-/* TITULOS */
-h2{
-    border-left:5px solid #2bd2c9;
-    padding-left:10px;
-}
-
-/* CARDS */
-.card-custom{
-    background: rgba(255,255,255,0.08);
-    padding:15px;
     border-radius:15px;
-    margin-top:10px;
 }
 
 /* CERTIFICADOS */
 .certificados-container{
     display:flex;
-    flex-wrap:wrap;
     gap:20px;
-    justify-content:center;
+    flex-wrap:wrap;
 }
 
 .certificado-card{
-    background: rgba(255,255,255,0.08);
-    padding:20px;
-    border-radius:15px;
-    width:250px;
-    text-align:center;
-
-    box-shadow: 0 0 10px rgba(43,210,201,0.5);
-    transition:0.3s;
+    background: rgba(255,255,255,0.1);
+    padding:15px;
+    border-radius:10px;
 }
 
-.certificado-card:hover{
-    transform: scale(1.05);
-}
-
-/* MENSAJE */
-#mensajeEnviado{
+/* BOTON TOP */
+.btn-top{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: purple;
+    color:white;
+    border:none;
+    border-radius:50%;
+    width:45px;
+    height:45px;
     display:none;
-    color:#2bd2c9;
+}
+
+.btn-top.show{
+    display:block;
 }
