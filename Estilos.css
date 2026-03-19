@@ -16,7 +16,13 @@ body{
     text-decoration:none;
 }
 
-/* BOTONES */
+/* FOTO */
+img{
+    width:150px;
+    border-radius:50%;
+}
+
+/* BOTONES SOCIALES */
 .social-btn{
     margin:5px;
     display:inline-block;
@@ -27,7 +33,7 @@ body{
     text-decoration:none;
 }
 
-/* PROYECTOS */
+/* CARDS */
 .card-custom{
     background: rgba(255,255,255,0.1);
     padding:15px;
@@ -35,14 +41,14 @@ body{
     border-radius:10px;
 }
 
-/* BOTONES PEQUEÑOS */
+/* BOTONES */
 .btn-juntos{
     padding: 4px 10px;
     font-size: 13px;
     margin-right: 5px;
 }
 
-/* MENSAJE CONTACTO */
+/* MENSAJE */
 #mensajeEnviado{
     display:none;
 }
