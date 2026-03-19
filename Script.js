@@ -10,68 +10,28 @@ window.addEventListener("scroll", () => {
 });
 
 btnTop.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    window.scrollTo({top:0, behavior:"smooth"});
 });
 
 // RESEÑAS
-let reviews = [];
+let reviews=[];
 
-const form = document.getElementById("reviewForm");
-const container = document.getElementById("reviewsContainer");
-const promedioText = document.getElementById("promedio");
+document.getElementById("reviewForm").addEventListener("submit",e=>{
+e.preventDefault();
 
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
+let nombre=document.getElementById("nombre").value;
+let mensaje=document.getElementById("mensaje").value;
 
-    const nombre = document.getElementById("nombre").value;
-    const mensaje = document.getElementById("mensaje").value;
-    const rating = parseInt(document.getElementById("rating").value);
+reviews.push({nombre,mensaje});
 
-    reviews.push({ nombre, mensaje, rating });
+let div=document.createElement("div");
+div.innerHTML=`<p>${nombre}: ${mensaje}</p>`;
 
-    mostrarReviews();
-    calcularPromedio();
-
-    form.reset();
+document.getElementById("reviewsContainer").appendChild(div);
 });
 
-function mostrarReviews() {
-    container.innerHTML = "";
-
-    reviews.forEach((r, index) => {
-        const div = document.createElement("div");
-        div.classList.add("card", "p-3", "mt-2");
-
-        div.innerHTML = `
-            <h5>${r.nombre} - ${"⭐".repeat(r.rating)}</h5>
-            <p>${r.mensaje}</p>
-        `;
-
-        container.appendChild(div);
-    });
-}
-
-function calcularPromedio(){
-    if(reviews.length===0){
-        promedioText.innerText="Promedio: ⭐ 0";
-        return;
-    }
-
-    let total = reviews.reduce((a,b)=>a+b.rating,0);
-    let prom = (total/reviews.length).toFixed(1);
-
-    promedioText.innerText="Promedio: ⭐ "+prom;
-}
-
 // CONTACTO
-const contactForm = document.getElementById("contactForm");
-const mensaje = document.getElementById("mensajeEnviado");
-
-contactForm.addEventListener("submit", function(e) {
-    e.preventDefault();
-    mensaje.style.display = "block";
-    contactForm.reset();
+document.getElementById("contactForm").addEventListener("submit",e=>{
+e.preventDefault();
+document.getElementById("mensajeEnviado").style.display="block";
 });
