@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Adopción de Mascotas</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
 <style>
 body {
   background: linear-gradient(135deg, #2b275a, #3b3770);
@@ -11,7 +19,7 @@ header {
   border-radius: 0 0 25px 25px;
 }
 
-/* FORMULARIO */
+/* FORM */
 section.card {
   background: rgba(255,255,255,0.05);
   border-radius: 20px;
@@ -50,3 +58,148 @@ button {
   opacity: 0.7;
 }
 </style>
+
+</head>
+
+<body>
+
+<header class="text-center p-4 shadow">
+  <h1>🐾 Sistema de Adopción</h1>
+  <p>Gestiona mascotas disponibles 💜</p>
+</header>
+
+<main class="container mt-4">
+
+<section class="card p-4 shadow">
+
+<form id="form">
+
+<input type="hidden" id="editIndex">
+
+<input type="text" id="nombre" class="form-control mt-2" placeholder="Nombre">
+<input type="text" id="tipo" class="form-control mt-2" placeholder="Tipo">
+<input type="number" id="edad" class="form-control mt-2" placeholder="Edad">
+
+<button class="mt-3 w-100">Guardar</button>
+
+</form>
+
+</section>
+
+<section class="mt-3">
+<input type="text" id="buscar" class="form-control" placeholder="Buscar...">
+</section>
+
+<section class="mt-3">
+<select id="filtro" class="form-select">
+  <option value="todos">Todos</option>
+  <option value="disponible">Disponibles</option>
+  <option value="adoptado">Adoptados</option>
+</select>
+</section>
+
+<section class="mt-3 text-center fw-bold">
+<p id="contador"></p>
+</section>
+
+<section id="lista"></section>
+
+</main>
+
+<script>
+let mascotas = JSON.parse(localStorage.getItem("adopcion")) || [];
+
+const form = document.getElementById("form");
+const lista = document.getElementById("lista");
+const buscador = document.getElementById("buscar");
+const filtro = document.getElementById("filtro");
+const contador = document.getElementById("contador");
+
+function guardar(){
+  localStorage.setItem("adopcion", JSON.stringify(mascotas));
+}
+
+function mostrar(){
+  let texto = buscador.value.toLowerCase();
+  let estado = filtro.value;
+
+  let filtradas = mascotas.filter(m => {
+    let coincideNombre = m.nombre.toLowerCase().includes(texto);
+    let coincideEstado = estado === "todos" || m.estado === estado;
+    return coincideNombre && coincideEstado;
+  });
+
+  lista.innerHTML = "";
+
+  filtradas.forEach((m, i) => {
+
+    let card = document.createElement("article");
+    card.className = m.estado;
+
+    card.innerHTML = `
+      <h5>${m.nombre}</h5>
+      <p>${m.tipo} - ${m.edad} años</p>
+      <p>Estado: ${m.estado}</p>
+
+      <button onclick="cambiarEstado(${i})">🔄 Estado</button>
+      <button onclick="editar(${i})">✏️ Editar</button>
+      <button onclick="eliminar(${i})">🗑️ Eliminar</button>
+    `;
+
+    lista.appendChild(card);
+  });
+
+  contador.textContent = "Mascotas: " + filtradas.length;
+}
+
+form.addEventListener("submit", function(e){
+  e.preventDefault();
+
+  let nombre = document.getElementById("nombre").value;
+  let tipo = document.getElementById("tipo").value;
+  let edad = document.getElementById("edad").value;
+  let index = document.getElementById("editIndex").value;
+
+  let mascota = {nombre, tipo, edad, estado: "disponible"};
+
+  if(index === ""){
+    mascotas.push(mascota);
+  } else {
+    mascotas[index] = mascota;
+  }
+
+  guardar();
+  mostrar();
+  form.reset();
+  document.getElementById("editIndex").value = "";
+});
+
+function eliminar(i){
+  mascotas.splice(i,1);
+  guardar();
+  mostrar();
+}
+
+function editar(i){
+  let m = mascotas[i];
+
+  document.getElementById("nombre").value = m.nombre;
+  document.getElementById("tipo").value = m.tipo;
+  document.getElementById("edad").value = m.edad;
+  document.getElementById("editIndex").value = i;
+}
+
+function cambiarEstado(i){
+  mascotas[i].estado = mascotas[i].estado === "disponible" ? "adoptado" : "disponible";
+  guardar();
+  mostrar();
+}
+
+buscador.addEventListener("input", mostrar);
+filtro.addEventListener("change", mostrar);
+
+mostrar();
+</script>
+
+</body>
+</html>
