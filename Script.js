@@ -33,7 +33,7 @@ btnTop.addEventListener("click", () => {
 }
 
 
-// ===== ACTIVAR ANIMACIONES AL CARGAR (🔥 IMPORTANTE) =====
+// ===== ACTIVAR ANIMACIONES AL CARGAR =====
 window.addEventListener("load", () => {
     document.querySelectorAll(".fade-in").forEach(el => {
         el.classList.add("visible");
@@ -72,14 +72,35 @@ function mostrarReviews() {
 
     reviews.forEach((r, index) => {
         const div = document.createElement("div");
-        div.classList.add("card", "p-3", "mt-2");
+
+        // CLASES + ESTILO PRO
+        div.className = "card p-3 mt-3 text-white";
+        div.style.background = "rgba(0,0,0,0.7)";
+        div.style.border = "1px solid rgba(168,85,247,0.3)";
+        div.style.borderRadius = "10px";
+        div.style.boxShadow = "0 0 15px rgba(168,85,247,0.3)";
 
         div.innerHTML = `
-            <h5>${r.nombre} - ${"⭐".repeat(r.rating)}</h5>
+            <h5 style="color:#67e8f9">${r.nombre} - ${"⭐".repeat(r.rating)}</h5>
             <p>${r.mensaje}</p>
-            <button class="btn btn-warning btn-sm me-2" onclick="editarReview(${index})">Editar</button>
-            <button class="btn btn-danger btn-sm" onclick="eliminarReview(${index})">Eliminar</button>
+            <button class="btn btn-sm me-2 editar-btn">Editar</button>
+            <button class="btn btn-sm eliminar-btn">Eliminar</button>
         `;
+
+        // BOTONES CON ESTILO PRO
+        const editarBtn = div.querySelector(".editar-btn");
+        const eliminarBtn = div.querySelector(".eliminar-btn");
+
+        editarBtn.style.background = "linear-gradient(135deg,#22d3ee,#a855f7)";
+        editarBtn.style.border = "none";
+        editarBtn.style.color = "white";
+
+        eliminarBtn.style.background = "linear-gradient(135deg,#ef4444,#dc2626)";
+        eliminarBtn.style.border = "none";
+        eliminarBtn.style.color = "white";
+
+        editarBtn.onclick = () => editarReview(index);
+        eliminarBtn.onclick = () => eliminarReview(index);
 
         container.appendChild(div);
     });
@@ -116,25 +137,30 @@ function calcularPromedio(){
 
 // ===== CONTACTO =====
 const contactForm = document.getElementById("contactForm");
-const mensaje = document.getElementById("mensajeEnviado");
+const mensajeEnviado = document.getElementById("mensajeEnviado");
 
 if(contactForm){
 contactForm.addEventListener("submit", function(e) {
     e.preventDefault();
-    mensaje.style.display = "block";
+
+    mensajeEnviado.style.display = "block";
+    mensajeEnviado.style.color = "#22c55e";
+    mensajeEnviado.style.textShadow = "0 0 10px rgba(34,197,94,0.7)";
+
     contactForm.reset();
 });
 }
 
 
-// ===== CERTIFICADOS (OPCIONAL SI USAS MODAL) =====
+// ===== CERTIFICADOS =====
 function verCertificado(ruta){
     const modal = document.getElementById("modalCertificado");
     const img = document.getElementById("imgCertificado");
 
     if(modal && img){
         img.src = ruta;
-        modal.style.display = "block";
+        modal.style.display = "flex";
+        modal.style.background = "rgba(0,0,0,0.8)";
     }
 }
 
