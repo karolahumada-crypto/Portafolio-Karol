@@ -17,8 +17,8 @@
   <a href="#contacto">Contacto</a>
 </nav>
 
-<header class="container">
-  <img src="Foto Portafolio.png" alt="Foto de perfil">
+<header class="container text-center">
+  <img src="./Fotos/Tufoto.png">
   <h1 class="mt-3">Karol Andrea Ahumada Cruz</h1>
   <p>Game Tester | QA Analyst</p>
 
@@ -36,7 +36,7 @@
   <h2>Resumen Profesional</h2>
   <p>
     Analista de Control de Calidad con experiencia en desarrollo de software y pruebas de videojuegos.
-    Manejo de Python y Java, con enfoque en metodologías SCRUM.
+    Manejo de Python y Java, con enfoque en metodologías SCRUM, trabajo en equipo y creatividad.
   </p>
 </section>
 
@@ -48,25 +48,48 @@
   <span class="badge bg-dark">HTML</span>
   <span class="badge bg-dark">CSS</span>
   <span class="badge bg-dark">JavaScript</span>
+  <span class="badge bg-dark">Testing</span>
+  <span class="badge bg-dark">SCRUM</span>
 </section>
 
+<section>
+  <h2>Experiencia</h2>
+  <p>
+    Enfocada en aprendizaje continuo, pruebas de software y desarrollo.
+    Destacada por creatividad, compromiso y trabajo en equipo.
+  </p>
+</section>
+
+<section>
+  <h2>Educación</h2>
+  <p>Técnico en Sistemas – CESDE (2025 - actualidad)</p>
+</section>
+
+<!-- PROYECTOS -->
 <section id="proyectos">
   <h2>Proyectos</h2>
 
   <article class="card-custom">
     <h5>Adopción De Mascotas</h5>
     <a href="bugs.html" class="btn btn-light btn-sm btn-juntos">Ver</a>
-    <a href="https://github.com/" class="btn btn-light btn-sm btn-juntos">Código</a>
+    <a href="https://github.com/karolahumada-crypto/Bug" class="btn btn-light btn-sm btn-juntos">Código</a>
+  </article>
+
+  <article class="card-custom">
+    <h5>App Mascotas</h5>
+    <a href="registro.html" class="btn btn-light btn-sm btn-juntos">Ver</a>
+    <a href="https://github.com/karolahumada-crypto/Registro" class="btn btn-light btn-sm btn-juntos">Código</a>
   </article>
 
 </section>
 
+<!-- RESEÑAS -->
 <section>
   <h2>⭐ Reseñas</h2>
 
   <p id="promedio">Promedio: ⭐ 0</p>
 
-  <form id="reviewForm">
+  <form id="reviewForm" class="d-flex flex-column gap-2">
     <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required>
     <textarea id="mensaje" class="form-control" placeholder="Tu comentario..." required></textarea>
 
@@ -78,21 +101,22 @@
       <option value="5">⭐⭐⭐⭐⭐</option>
     </select>
 
-    <button type="submit">Agregar reseña</button>
+    <button type="submit" class="btn btn-light">Agregar reseña</button>
   </form>
 
   <section id="reviewsContainer"></section>
 </section>
 
+<!-- CONTACTO -->
 <section id="contacto">
   <h2>Contáctame</h2>
 
-  <form id="contactForm">
+  <form id="contactForm" class="d-flex flex-column gap-2">
     <input type="text" class="form-control" placeholder="Tu nombre" required>
     <input type="email" class="form-control" placeholder="Tu correo" required>
     <textarea class="form-control" placeholder="Tu mensaje..." required></textarea>
 
-    <button type="submit">Enviar mensaje</button>
+    <button type="submit" class="btn btn-light">Enviar mensaje</button>
   </form>
 
   <p id="mensajeEnviado">✅ Mensaje enviado exitosamente</p>
