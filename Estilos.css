@@ -1,4 +1,3 @@
-/* FONDO */
 body{
     background: linear-gradient(135deg, #2b275a, #3b3770);
     color: white;
@@ -35,7 +34,7 @@ header h1{
     text-shadow:0 0 12px #6cf0ff;
 }
 
-/* BOTONES REDES */
+/* BOTONES */
 .social-btn{
     margin:10px;
     padding:10px 20px;
@@ -43,17 +42,15 @@ header h1{
     background: linear-gradient(90deg, #2bd2c9, #7b4dff);
     color:white;
     text-decoration:none;
-    transition:0.3s;
 }
 
-/* CONTENIDO */
+/* SECCIONES */
 main{
     display:flex;
     flex-direction:column;
     align-items:center;
 }
 
-/* CAJAS (GLOW SUAVE COMO TU IMAGEN) */
 main section{
     width:80%;
     max-width:900px;
@@ -73,35 +70,35 @@ h2{
     padding-left:10px;
 }
 
-/* INPUTS */
-input, textarea, select{
-    border-radius:10px !important;
-    border:none !important;
-    padding:10px !important;
-}
-
-/* BOTONES (LOS IMPORTANTES 🔥) */
-button{
-    border:none;
-    padding:12px;
-    border-radius:25px;
-    background: linear-gradient(90deg, #2bd2c9, #7b4dff);
-    color:white;
-    font-weight:bold;
-    transition:0.3s;
-}
-
-/* HOVER */
-button:hover{
-    transform:scale(1.05);
-}
-
 /* CARDS */
 .card-custom{
     background: rgba(255,255,255,0.08);
     padding:15px;
     border-radius:15px;
     margin-top:10px;
+}
+
+/* CERTIFICADOS */
+.certificados-container{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+}
+
+.certificado-card{
+    background: rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:15px;
+    width:250px;
+    text-align:center;
+
+    box-shadow: 0 0 10px rgba(43,210,201,0.5);
+    transition:0.3s;
+}
+
+.certificado-card:hover{
+    transform: scale(1.05);
 }
 
 /* MENSAJE */
