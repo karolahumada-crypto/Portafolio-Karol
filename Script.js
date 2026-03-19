@@ -1,3 +1,22 @@
+// BOTON SUBIR
+const btnTop = document.getElementById("btnTop");
+
+window.addEventListener("scroll", () => {
+    if(window.scrollY > 200){
+        btnTop.classList.add("show");
+    }else{
+        btnTop.classList.remove("show");
+    }
+});
+
+btnTop.addEventListener("click", () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
+
+// RESEÑAS
 let reviews = [];
 
 const form = document.getElementById("reviewForm");
@@ -29,26 +48,10 @@ function mostrarReviews() {
         div.innerHTML = `
             <h5>${r.nombre} - ${"⭐".repeat(r.rating)}</h5>
             <p>${r.mensaje}</p>
-            <button class="btn btn-warning btn-sm me-2" onclick="editarReview(${index})">Editar</button>
-            <button class="btn btn-danger btn-sm" onclick="eliminarReview(${index})">Eliminar</button>
         `;
 
         container.appendChild(div);
     });
-}
-
-function eliminarReview(i){
-    reviews.splice(i,1);
-    mostrarReviews();
-    calcularPromedio();
-}
-
-function editarReview(i){
-    let nuevo = prompt("Editar comentario:", reviews[i].mensaje);
-    if(nuevo){
-        reviews[i].mensaje = nuevo;
-        mostrarReviews();
-    }
 }
 
 function calcularPromedio(){
@@ -63,7 +66,7 @@ function calcularPromedio(){
     promedioText.innerText="Promedio: ⭐ "+prom;
 }
 
-/* CONTACTO */
+// CONTACTO
 const contactForm = document.getElementById("contactForm");
 const mensaje = document.getElementById("mensajeEnviado");
 
