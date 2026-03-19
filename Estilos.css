@@ -16,37 +16,66 @@ body{
     background:#0d0d2b;
 }
 
-.navbar-pro a{
-    color:white;
-    text-decoration:none;
-}
-
 /* SECCIONES */
-main{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-}
-
 section{
     width:80%;
-    margin:20px;
+    margin:20px auto;
     padding:20px;
     background: rgba(255,255,255,0.05);
     border-radius:15px;
+    transition:0.3s;
+}
+
+/* HOVER */
+section:hover{
+    transform: translateY(-5px);
+}
+
+/* CARDS */
+.card-custom{
+    padding:15px;
+    border-radius:10px;
+    background: rgba(255,255,255,0.1);
+    transition:0.3s;
+}
+
+.card-custom:hover{
+    transform: scale(1.05);
+}
+
+/* BOTONES */
+.social-btn{
+    background: linear-gradient(90deg, #2bd2c9, #7b4dff);
+    padding:10px;
+    border-radius:20px;
+    margin:5px;
+    display:inline-block;
 }
 
 /* CERTIFICADOS */
-.certificados-container{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
+.certificado-card{
+    padding:15px;
+    background: rgba(255,255,255,0.1);
+    border-radius:10px;
+    transition:0.3s;
 }
 
-.certificado-card{
-    background: rgba(255,255,255,0.1);
-    padding:15px;
-    border-radius:10px;
+.certificado-card:hover{
+    transform: scale(1.05);
+}
+
+/* ANIMACION ENTRADA */
+.fade-in{
+    opacity:0;
+    transform: translateY(20px);
+    animation: aparecer 1s forwards;
+}
+
+@keyframes aparecer{
+    to{
+        opacity:1;
+        transform: translateY(0);
+    }
 }
 
 /* BOTON TOP */
