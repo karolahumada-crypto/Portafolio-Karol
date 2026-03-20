@@ -6,140 +6,153 @@
 <title>Portafolio Karol</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="Estilos.css">
+
+<style>
+html{scroll-behavior:smooth;}
+
+/* ===== FONDO ===== */
+body{
+  background: linear-gradient(-45deg, #0f0c29, #302b63, #24243e, #1a1a40);
+  background-size:400% 400%;
+  animation:fondo 12s ease infinite;
+  color:white;
+  font-family:Arial;
+}
+
+@keyframes fondo{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* NAV */
+.navbar-pro{
+display:flex;
+justify-content:center;
+gap:20px;
+padding:15px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+}
+
+.navbar-pro a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+}
+
+.navbar-pro a:hover{
+color:#c084fc;
+transform:scale(1.1);
+}
+
+/* HEADER */
+header{text-align:center;padding:40px;}
+
+header img{
+width:150px;height:150px;
+border-radius:50%;
+border:4px solid #22d3ee;
+box-shadow:0 0 25px #22d3ee;
+}
+
+/* BOTONES */
+.social-btn{
+padding:10px 18px;
+margin:5px;
+border-radius:20px;
+background:linear-gradient(90deg,#22d3ee,#a855f7);
+color:white;
+text-decoration:none;
+display:inline-block;
+}
+
+.social-btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 15px #a855f7;
+}
+
+/* SECCIONES */
+section{
+width:80%;
+margin:30px auto;
+padding:25px;
+background:rgba(0,0,0,0.5);
+border-radius:15px;
+box-shadow:0 0 20px rgba(34,211,238,0.3);
+}
+
+section:hover{
+box-shadow:0 0 30px rgba(168,85,247,0.5);
+}
+
+/* CARDS */
+.card-custom{
+background:rgba(0,0,0,0.6);
+padding:15px;
+border-radius:10px;
+margin-top:10px;
+}
+
+/* INPUTS */
+input, textarea, select{
+background:rgba(0,0,0,0.7)!important;
+color:white!important;
+border:1px solid rgba(168,85,247,0.3)!important;
+}
+
+/* BOTON TOP */
+.btn-top{
+position:fixed;
+bottom:20px;
+right:20px;
+background:linear-gradient(#22d3ee,#a855f7);
+color:white;
+border:none;
+border-radius:50%;
+width:45px;height:45px;
+display:none;
+}
+
+.btn-top.show{display:block;}
+
+.fade-in{opacity:0;transform:translateY(40px);transition:0.8s;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+</style>
 </head>
 
 <body>
 
 <nav class="navbar-pro">
-  <a href="#">Inicio</a>
-  <a href="#proyectos">Proyectos</a>
-  <a href="#certificados">Certificados</a>
-  <a href="#reseñas">Reseñas</a>
-  <a href="#contacto">Contacto</a>
+<a href="#">Inicio</a>
+<a href="#proyectos">Proyectos</a>
+<a href="#certificados">Certificados</a>
+<a href="#reseñas">Reseñas</a>
+<a href="#contacto">Contacto</a>
 </nav>
 
-<header class="container text-center fade-in">
-  <img src="Foto Portafolio.png">
-  <h1 class="mt-3">Karol Andrea Ahumada Cruz</h1>
-  <p>Game Tester | QA Analyst</p>
+<header class="fade-in">
+<img src="Foto Portafolio.png">
+<h1 class="mt-3">Karol Andrea Ahumada Cruz</h1>
+<p>Game Tester | QA Analyst</p>
 
-  <section>
-    <a href="https://github.com/" class="social-btn">GitHub</a>
-    <a href="#" class="social-btn">Facebook</a>
-    <a href="#" class="social-btn">Instagram</a>
-    <a href="#" class="social-btn">WhatsApp</a>
-  </section>
+<div>
+<a href="#" class="social-btn">GitHub</a>
+<a href="#" class="social-btn">Facebook</a>
+<a href="#" class="social-btn">Instagram</a>
+<a href="#" class="social-btn">WhatsApp</a>
+</div>
 </header>
 
 <main>
 
 <section class="fade-in">
-  <h2>Resumen Profesional</h2>
-  <p>Analista de Control de Calidad con experiencia en desarrollo de software y pruebas de videojuegos.</p>
+<h2>Resumen Profesional</h2>
+<p>Analista QA con experiencia en testing de software y videojuegos.</p>
 </section>
 
 <section class="fade-in">
-  <h2>Habilidades</h2>
-  <span class="badge bg-dark">Java</span>
-  <span class="badge bg-dark">Python</span>
-  <span class="badge bg-dark">SQL</span>
-  <span class="badge bg-dark">HTML</span>
-  <span class="badge bg-dark">CSS</span>
-  <span class="badge bg-dark">JavaScript</span>
-  <span class="badge bg-dark">Testing</span>
-  <span class="badge bg-dark">SCRUM</span>
-</section>
-
-<section class="fade-in">
-  <h2>Educación</h2>
-  <p>Técnico en Elaboración de Audiovisuales - SENA (2023 - 2024)</p>
-  <p>Técnico en Sistemas – CESDE (2025 - actualidad)</p>
-</section>
-
-<section id="proyectos" class="fade-in">
-  <h2>Proyectos</h2>
-
-  <article class="card-custom">
-    <h5>Adopción De Mascotas</h5>
-    <a href="./bugs.html" target="_blank" class="btn btn-light btn-sm">Ver</a>
-    <a href="https://github.com/karolahumada-crypto/Bug" target="_blank" class="btn btn-light btn-sm">Código</a>
-  </article>
-
-  <article class="card-custom">
-    <h5>App Mascotas</h5>
-    <a href="./registro.html" target="_blank" class="btn btn-light btn-sm">Ver</a>
-    <a href="https://github.com/karolahumada-crypto/Registro" target="_blank" class="btn btn-light btn-sm">Código</a>
-  </article>
-
-</section>
-
-<section id="certificados" class="fade-in">
-  <h2>🎓 Certificados</h2>
-
-  <div class="certificados-container">
-
-    <div class="certificado-card">
-      <h5>Titulo Tecnico</h5>
-      <p>SENA</p>
-      <a href="9508002700539TI1023901438C_page-0001.png" target="_blank" class="btn btn-certificado">Ver certificado</a>
-    </div>
-
-    <div class="certificado-card">
-      <h5>Curso Catedra de Ser Emprendedor</h5>
-      <p>CESDE</p>
-      <a href="Certificado Catedra Ser Emprendedor_page-0001.png" target="_blank" class="btn btn-certificado">Ver certificado</a>
-    </div>
-
-  </div>
-</section>
-
-<section id="reseñas" class="fade-in">
-  <h2>⭐ Reseñas</h2>
-
-  <p id="promedio">Promedio: ⭐ 0</p>
-
-  <form id="reviewForm" class="d-flex flex-column gap-2">
-    <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required>
-    <textarea id="mensaje" class="form-control" placeholder="Tu comentario..." required></textarea>
-
-    <select id="rating" class="form-select">
-      <option value="1">⭐</option>
-      <option value="2">⭐⭐</option>
-      <option value="3">⭐⭐⭐</option>
-      <option value="4">⭐⭐⭐⭐</option>
-      <option value="5">⭐⭐⭐⭐⭐</option>
-    </select>
-
-    <button type="submit" class="btn btn-pro">Agregar reseña</button>
-  </form>
-
-  <section id="reviewsContainer"></section>
-</section>
-
-<section id="contacto" class="fade-in">
-  <h2>Contáctame</h2>
-
-  <form id="contactForm" class="d-flex flex-column gap-2">
-    <input type="text" class="form-control" placeholder="Tu nombre" required>
-    <input type="email" class="form-control" placeholder="Tu correo" required>
-    <textarea class="form-control" placeholder="Tu mensaje..." required></textarea>
-
-    <button type="submit" class="btn btn-pro">Enviar mensaje</button>
-  </form>
-
-  <p id="mensajeEnviado">✅ Mensaje enviado exitosamente</p>
-</section>
-
-</main>
-
-<footer class="text-center p-3">
-  © 2026 Karol 💜
-</footer>
-
-<button id="btnTop" class="btn-top">⬆️</button>
-
-<script src="Script.js"></script>
-
-</body>
-</html>
+<h2>Habilidades</h2>
+<span class="badge bg-dark">Java</span
