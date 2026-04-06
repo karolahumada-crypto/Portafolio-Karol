@@ -12,16 +12,14 @@
 <body>
 
 <nav class="navbar-pro">
-  <a onclick="mostrarSeccion('inicio')">Inicio</a>
-  <a onclick="mostrarSeccion('proyectos')">Proyectos</a>
-  <a onclick="mostrarSeccion('certificados')">Certificados</a>
-  <a onclick="mostrarSeccion('reseñas')">Reseñas</a>
-  <a onclick="mostrarSeccion('contacto')">Contacto</a>
+  <a href="#">Inicio</a>
+  <a href="#proyectos">Proyectos</a>
+  <a href="#certificados">Certificados</a>
+  <a href="#reseñas">Reseñas</a>
+  <a href="#contacto">Contacto</a>
 </nav>
 
-<main>
-
-<header id="inicio" class="seccion container text-center fade-in">
+<header class="container text-center fade-in">
   <img src="Foto Portafolio.png">
   <h1 class="mt-3">Karol Andrea Ahumada Cruz</h1>
   <p>Game Tester | QA Analyst</p>
@@ -32,67 +30,74 @@
     <a href="https://www.instagram.com/" class="social-btn">Instagram</a>
     <a href="https://web.whatsapp.com/" class="social-btn">WhatsApp</a>
   </section>
-
-  <section>
-    <h2>Resumen Profesional</h2>
-    <p>
-    Soy analista de control de calidad con una sólida trayectoria en desarrollo de software. Domina Java y Python, habilidades que aplica a las pruebas de juegos y aplicaciones. Su experiencia abarca diversas metodologías de pruebas de videojuegos y desarrollo en Python. Karol tiene experiencia en flujos de trabajo SCRUM y se desenvuelve con éxito en entornos de trabajo colaborativos. Creativa y dedicada, aporta ideas innovadoras a los proyectos y ofrece resultados de alta calidad de forma constante.
-    </p>
-  </section>
-
-  <section>
-    <h2>Habilidades</h2>
-    <span class="badge bg-dark">Java</span>
-    <span class="badge bg-dark">Python</span>
-    <span class="badge bg-dark">SQL</span>
-    <span class="badge bg-dark">HTML</span>
-    <span class="badge bg-dark">CSS</span>
-    <span class="badge bg-dark">JavaScript</span>
-    <span class="badge bg-dark">Testing</span>
-  </section>
-
-  <section>
-    <h2>Educación</h2>
-    <p>Técnico en Elaboración de Audiovisuales - SENA (2023 - 2024)</p>
-    <p>Técnico en Sistemas – CESDE (2025 - actualidad)</p>
-  </section>
 </header>
 
-<section id="proyectos" class="seccion fade-in">
+<main>
+
+<section class="fade-in">
+  <h2>Resumen Profesional</h2>
+  <p>
+  Soy analista de control de calidad con una sólida trayectoria en desarrollo de software. Domina Java y Python, habilidades que aplica a las pruebas de juegos y aplicaciones. Su experiencia abarca diversas metodologías de pruebas de videojuegos y desarrollo en Python. Karol tiene experiencia en flujos de trabajo SCRUM y se desenvuelve con éxito en entornos de trabajo colaborativos. Creativa y dedicada, aporta ideas innovadoras a los proyectos y ofrece resultados de alta calidad de forma constante.
+  </p>
+</section>
+
+<section class="fade-in">
+  <h2>Habilidades</h2>
+  <span class="badge bg-dark">Java</span>
+  <span class="badge bg-dark">Python</span>
+  <span class="badge bg-dark">SQL</span>
+  <span class="badge bg-dark">HTML</span>
+  <span class="badge bg-dark">CSS</span>
+  <span class="badge bg-dark">JavaScript</span>
+  <span class="badge bg-dark">Testing</span>
+</section>
+
+<section class="fade-in">
+  <h2>Educación</h2>
+  <p>Técnico en Elaboración de Audiovisuales - SENA (2023 - 2024)</p>
+  <p>Técnico en Sistemas – CESDE (2025 - actualidad)</p>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos" class="fade-in">
   <h2>Proyectos</h2>
-
-  <article class="card-custom"> 
-    <h5>Leyendas De Mexico</h5> 
-    <a href="./leyendasmexicanas.html" target="_blank" class="btn btn-light btn-sm">Ver</a> 
-    <a href="https://github.com/karolahumada-crypto/leyendasmexicanas.html" target="_blank" class="btn btn-light btn-sm">Código</a> 
-  </article>
-
+<article class="card-custom"> 
+  <h5>Leyendas De Mexico</h5> 
+  <a href="./leyendasmexicanas.html" target="_blank" class="btn btn-light btn-sm">Ver</a> 
+ <a href="https://github.com/karolahumada-crypto/leyendasmexicanas.html" target="_blank" class="btn btn-light btn-sm">Código</a> 
+</article>
+</article>
   <article class="card-custom">
     <h5>App Mascotas</h5>
     <a href="./registro.html" target="_blank" class="btn btn-light btn-sm">Ver</a>
     <a href="https://github.com/karolahumada-crypto/Registro" target="_blank" class="btn btn-light btn-sm">Código</a>
   </article>
+
 </section>
 
-<section id="certificados" class="seccion fade-in">
+<!-- CERTIFICADOS -->
+<section id="certificados" class="fade-in">
   <h2>🎓 Certificados</h2>
 
-  <section class="certificados-container">
-    <article class="certificado-card">
+  <div class="certificados-container">
+
+    <div class="certificado-card">
       <h5>Titulo Tecnico</h5>
       <p>SENA</p>
       <a href="9508002700539TI1023901438C_page-0001.png" target="_blank" class="btn btn-light btn-sm">Ver certificado</a>
-    </article>
+    </div>
 
-    <article class="certificado-card">
+    <div class="certificado-card">
       <h5>Curso Catedra de Ser Emprendedor</h5>
       <p>CESDE</p>
       <a href="Certificado Catedra Ser Emprendedor_page-0001.png" target="_blank" class="btn btn-light btn-sm">Ver certificado</a>
-    </article>
-  </section>
+    </div>
+
+  </div>
 </section>
 
-<section id="reseñas" class="seccion fade-in">
+<!-- RESEÑAS -->
+<section id="reseñas" class="fade-in">
   <h2>⭐ Reseñas</h2>
 
   <p id="promedio">Promedio: ⭐ 0</p>
@@ -115,7 +120,8 @@
   <section id="reviewsContainer"></section>
 </section>
 
-<section id="contacto" class="seccion fade-in">
+<!-- CONTACTO -->
+<section id="contacto" class="fade-in">
   <h2>Contáctame</h2>
 
   <form id="contactForm" class="d-flex flex-column gap-2">
