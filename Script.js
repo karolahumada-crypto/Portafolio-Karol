@@ -171,29 +171,3 @@ function cerrarModal(){
         modal.style.display = "none";
     }
 }
-
-// TODO TU JS ORIGINAL AQUÍ (NO CAMBIA)
-
-
-// ===== SPA =====
-function mostrarSeccion(id) {
-    const secciones = document.querySelectorAll('.seccion');
-
-    secciones.forEach(sec => {
-        sec.classList.remove('activo');
-    });
-
-    const activa = document.getElementById(id);
-    if(activa){
-        activa.classList.add('activo');
-    }
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-window.addEventListener("load", () => {
-    mostrarSeccion("inicio");
-});
