@@ -12,127 +12,100 @@
 <body>
 
 <nav class="navbar-pro">
-  <a href="#">Inicio</a>
-  <a href="#proyectos">Proyectos</a>
-  <a href="#certificados">Certificados</a>
-  <a href="#reseñas">Reseñas</a>
-  <a href="#contacto">Contacto</a>
+  <a onclick="mostrarSeccion('inicio')">Inicio</a>
+  <a onclick="mostrarSeccion('proyectos')">Proyectos</a>
+  <a onclick="mostrarSeccion('certificados')">Certificados</a>
+  <a onclick="mostrarSeccion('reseñas')">Reseñas</a>
+  <a onclick="mostrarSeccion('contacto')">Contacto</a>
 </nav>
 
-<header class="container text-center fade-in">
-  <img src="Foto Portafolio.png">
+<main>
+
+<header id="inicio" class="seccion text-center">
+  <img src="Foto Portafolio.png" width="150">
   <h1 class="mt-3">Karol Andrea Ahumada Cruz</h1>
   <p>Game Tester | QA Analyst</p>
 
   <section>
-    <a href="https://github.com/" class="social-btn">GitHub</a>
-    <a href="https://www.facebook.com/" class="social-btn">Facebook</a>
-    <a href="https://www.instagram.com/" class="social-btn">Instagram</a>
-    <a href="https://web.whatsapp.com/" class="social-btn">WhatsApp</a>
+    <a href="#" class="btn btn-light btn-sm">GitHub</a>
+    <a href="#" class="btn btn-light btn-sm">Facebook</a>
+    <a href="#" class="btn btn-light btn-sm">Instagram</a>
+  </section>
+
+  <section>
+    <h2>Resumen Profesional</h2>
+    <p>
+      Analista QA con experiencia en desarrollo de software, manejo de Java y Python,
+      pruebas de videojuegos y trabajo en metodologías SCRUM.
+    </p>
+  </section>
+
+  <section>
+    <h2>Habilidades</h2>
+    <span class="badge bg-dark">Java</span>
+    <span class="badge bg-dark">Python</span>
+    <span class="badge bg-dark">SQL</span>
+    <span class="badge bg-dark">HTML</span>
+    <span class="badge bg-dark">CSS</span>
+    <span class="badge bg-dark">JavaScript</span>
+  </section>
+
+  <section>
+    <h2>Educación</h2>
+    <p>SENA (2023 - 2024)</p>
+    <p>CESDE (2025 - Actualidad)</p>
   </section>
 </header>
 
-<main>
-
-<section class="fade-in">
-  <h2>Resumen Profesional</h2>
-  <p>
-  Soy analista de control de calidad con una sólida trayectoria en desarrollo de software. Domina Java y Python, habilidades que aplica a las pruebas de juegos y aplicaciones. Su experiencia abarca diversas metodologías de pruebas de videojuegos y desarrollo en Python. Karol tiene experiencia en flujos de trabajo SCRUM y se desenvuelve con éxito en entornos de trabajo colaborativos. Creativa y dedicada, aporta ideas innovadoras a los proyectos y ofrece resultados de alta calidad de forma constante.
-  </p>
-</section>
-
-<section class="fade-in">
-  <h2>Habilidades</h2>
-  <span class="badge bg-dark">Java</span>
-  <span class="badge bg-dark">Python</span>
-  <span class="badge bg-dark">SQL</span>
-  <span class="badge bg-dark">HTML</span>
-  <span class="badge bg-dark">CSS</span>
-  <span class="badge bg-dark">JavaScript</span>
-  <span class="badge bg-dark">Testing</span>
-</section>
-
-<section class="fade-in">
-  <h2>Educación</h2>
-  <p>Técnico en Elaboración de Audiovisuales - SENA (2023 - 2024)</p>
-  <p>Técnico en Sistemas – CESDE (2025 - actualidad)</p>
-</section>
-
-<!-- PROYECTOS -->
-<section id="proyectos" class="fade-in">
+<section id="proyectos" class="seccion">
   <h2>Proyectos</h2>
-<article class="card-custom"> 
-  <h5>Leyendas De Mexico</h5> 
-  <a href="./leyendasmexicanas.html" target="_blank" class="btn btn-light btn-sm">Ver</a> 
- <a href="https://github.com/karolahumada-crypto/leyendasmexicanas.html" target="_blank" class="btn btn-light btn-sm">Código</a> 
-</article>
-</article>
+
   <article class="card-custom">
-    <h5>App Mascotas</h5>
-    <a href="./registro.html" target="_blank" class="btn btn-light btn-sm">Ver</a>
-    <a href="https://github.com/karolahumada-crypto/Registro" target="_blank" class="btn btn-light btn-sm">Código</a>
+    <h5>Leyendas De Mexico</h5>
+    <a href="./leyendasmexicanas.html" class="btn btn-light btn-sm">Ver</a>
   </article>
 
+  <article class="card-custom">
+    <h5>App Mascotas</h5>
+    <a href="./registro.html" class="btn btn-light btn-sm">Ver</a>
+  </article>
 </section>
 
-<!-- CERTIFICADOS -->
-<section id="certificados" class="fade-in">
+<section id="certificados" class="seccion">
   <h2>🎓 Certificados</h2>
 
-  <div class="certificados-container">
+  <article class="certificado-card">
+    <h5>Titulo Tecnico</h5>
+    <a href="#" class="btn btn-light btn-sm">Ver</a>
+  </article>
 
-    <div class="certificado-card">
-      <h5>Titulo Tecnico</h5>
-      <p>SENA</p>
-      <a href="9508002700539TI1023901438C_page-0001.png" target="_blank" class="btn btn-light btn-sm">Ver certificado</a>
-    </div>
-
-    <div class="certificado-card">
-      <h5>Curso Catedra de Ser Emprendedor</h5>
-      <p>CESDE</p>
-      <a href="Certificado Catedra Ser Emprendedor_page-0001.png" target="_blank" class="btn btn-light btn-sm">Ver certificado</a>
-    </div>
-
-  </div>
+  <article class="certificado-card">
+    <h5>Curso Emprendimiento</h5>
+    <a href="#" class="btn btn-light btn-sm">Ver</a>
+  </article>
 </section>
 
-<!-- RESEÑAS -->
-<section id="reseñas" class="fade-in">
+<section id="reseñas" class="seccion">
   <h2>⭐ Reseñas</h2>
 
-  <p id="promedio">Promedio: ⭐ 0</p>
-
-  <form id="reviewForm" class="d-flex flex-column gap-2">
-    <input type="text" id="nombre" class="form-control" placeholder="Tu nombre" required>
-    <textarea id="mensaje" class="form-control" placeholder="Tu comentario..." required></textarea>
-
-    <select id="rating" class="form-select">
-      <option value="1">⭐</option>
-      <option value="2">⭐⭐</option>
-      <option value="3">⭐⭐⭐</option>
-      <option value="4">⭐⭐⭐⭐</option>
-      <option value="5">⭐⭐⭐⭐⭐</option>
-    </select>
-
-    <button type="submit" class="btn btn-light">Agregar reseña</button>
+  <form id="reviewForm">
+    <input type="text" id="nombre" placeholder="Nombre" class="form-control mb-2">
+    <textarea id="mensaje" placeholder="Comentario" class="form-control mb-2"></textarea>
+    <button class="btn btn-light">Enviar</button>
   </form>
 
   <section id="reviewsContainer"></section>
 </section>
 
-<!-- CONTACTO -->
-<section id="contacto" class="fade-in">
-  <h2>Contáctame</h2>
+<section id="contacto" class="seccion">
+  <h2>Contacto</h2>
 
-  <form id="contactForm" class="d-flex flex-column gap-2">
-    <input type="text" class="form-control" placeholder="Tu nombre" required>
-    <input type="email" class="form-control" placeholder="Tu correo" required>
-    <textarea class="form-control" placeholder="Tu mensaje..." required></textarea>
-
-    <button type="submit" class="btn btn-light">Enviar mensaje</button>
+  <form>
+    <input type="text" placeholder="Nombre" class="form-control mb-2">
+    <input type="email" placeholder="Correo" class="form-control mb-2">
+    <textarea placeholder="Mensaje" class="form-control mb-2"></textarea>
+    <button class="btn btn-light">Enviar</button>
   </form>
-
-  <p id="mensajeEnviado">✅ Mensaje enviado exitosamente</p>
 </section>
 
 </main>
@@ -140,8 +113,6 @@
 <footer class="text-center p-3">
   © 2026 Karol 💜
 </footer>
-
-<button id="btnTop" class="btn-top">⬆️</button>
 
 <script src="Script.js"></script>
 
