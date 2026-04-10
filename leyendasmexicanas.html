@@ -2,141 +2,33 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Leyendas de Terror - México</title>
+<title>Leyendas de Terror SPA</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<style>
-
-/* ===== FONDO TERROR ===== */
-body{
-  background: radial-gradient(circle, #000000, #1a0000, #000000);
-  color:white;
-  font-family: 'Courier New', monospace;
-}
-
-/* ===== TITULO ===== */
-header{
-  text-align:center;
-  padding:40px;
-  background: linear-gradient(135deg,#000,#8b0000);
-  box-shadow:0 0 30px red;
-}
-
-header h1{
-  font-size:40px;
-  text-shadow:0 0 20px red;
-}
-
-/* ===== TARJETAS ===== */
-.card-terror{
-  background: rgba(0,0,0,0.8);
-  border:1px solid red;
-  border-radius:15px;
-  padding:20px;
-  margin-top:20px;
-  transition:0.4s;
-}
-
-.card-terror:hover{
-  transform:scale(1.03);
-  box-shadow:0 0 20px red;
-}
-
-/* ===== IMAGENES CORREGIDAS ===== */
-.card-terror img{
-  width:100%;
-  max-height:300px;
-  object-fit:contain;
-  object-position:center;
-  background:black;
-  border-radius:10px;
-  margin-bottom:10px;
-}
-
-/* ===== BOTONES ===== */
-button{
-  background:red;
-  border:none;
-  color:white;
-  padding:8px 15px;
-  border-radius:10px;
-  margin-top:5px;
-}
-
-button:hover{
-  background:black;
-  border:1px solid red;
-}
-
-/* ===== EFECTO PARPADEO ===== */
-.parpadeo{
-  animation: parpadeo 1.5s infinite;
-}
-
-@keyframes parpadeo{
-  0%,100%{opacity:1;}
-  50%{opacity:0.4;}
-}
-
-/* ===== HISTORIAS ===== */
-#historias{
-  margin-top:40px;
-}
-
-.historia{
-  background: rgba(0,0,0,0.9);
-  border-left:4px solid red;
-  padding:15px;
-  margin-top:15px;
-  border-radius:10px;
-}
-
-.historia img{
-  width:100%;
-  max-height:200px;
-  object-fit:contain;
-  background:black;
-  margin-top:10px;
-  border-radius:10px;
-}
-
-/* ===== BOTON VOLVER ARRIBA ===== */
-#btnArriba{
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: red;
-  border: none;
-  color: white;
-  font-size: 20px;
-  padding: 10px 15px;
-  border-radius: 50%;
-  display: none;
-  cursor: pointer;
-  box-shadow: 0 0 10px red;
-}
-
-#btnArriba:hover{
-  background:black;
-  border:1px solid red;
-}
-
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<header id="inicio">
-  <h1 class="parpadeo">💀 Leyendas de Terror de México 💀</h1>
+<nav class="navbar navbar-dark bg-black border-bottom border-danger">
+  <section class="container text-center">
+    <button class="btn btn-danger mx-2" onclick="mostrarSeccion('inicio')">Inicio</button>
+    <button class="btn btn-outline-danger mx-2" onclick="mostrarSeccion('historias')">Historias</button>
+  </section>
+</nav>
+
+<header class="text-center p-5">
+  <h1 class="parpadeo">💀 Leyendas de Terror 💀</h1>
   <p>Historias que no te dejarán dormir...</p>
 </header>
 
 <main class="container">
 
-<!-- LA LLORONA -->
-<div class="card-terror">
-  <img src="llorona.png">
+<!-- INICIO -->
+<section id="inicio" class="seccion activa">
+
+<article class="card-terror">
+  <img src="llorona.jpg" class="img-fluid">
   <h3>La Llorona</h3>
   <p>No hay historia que se cuente con más frecuencia que "la llorona".
 
@@ -165,11 +57,10 @@ Cuando despertó la mañana siguiente buscaba a sus niños. ¿Dónde estaban sus
 Es cierto - y no falta quien lo quiera jurar - que cuando la luna está llena, se oyen los sollozos de una mujer, al lado del río.
 
 ¿Será la llorona que todavía está en busca de sus niños?</p>
-</div>
+</article>
 
-<!-- EL CHARRO NEGRO -->
-<div class="card-terror">
-  <img src="el charro negro.png">
+<article class="card-terror">
+  <img src="el charro negro.jpg" class="img-fluid">
   <h3>El Charro Negro</h3>
   <p>Hace muchos años, en una ciudad minera de México, numerosas familias de jornaleros trabajaban en el campo o en las minas desde el amanecer hasta muy tarde en la noche por no más que unos pocos pesos. Uno de ellos, José Luis, como tantos, era un hombre trabajador e insatisfecho con la suerte que le había tocado.
 
@@ -215,12 +106,11 @@ Por la puerta principal de la sala se hizo presente un charro alto y vestido de 
 
 El charro avanzó hasta donde reposaba el cuerpo de José Luis, tocó la tapa del ataúd y luego salió de la sala entre carcajadas dejando un aroma nauseabundo, entre flores podridas y azufre. Los presentes se persignaron y rezaron con fuerza. Al abrir la tapa del ataúd con los restos de su amigo no encontraron más que un esqueleto seco vistiendo las elegantes ropas del muerto.
 
-Desde aquel día, se cuenta que cuando alguien reniega de su pobre situación corre el riesgo de encontrarse con un misterioso charro vestido de negro que carga consigo una bolsa rebosante de monedas de oro…</p>
-</div>
+Desde aquel día, se cuenta que cuando alguien reniega de su pobre situación corre el riesgo de encontrarse con un misterioso charro vestido de negro que carga consigo una bolsa rebosante de monedas de oro</p>
+</article>
 
-<!-- LA PLANCHADA -->
-<div class="card-terror">
-  <img src="la planchada.png">
+<article class="card-terror">
+  <img src="la planchada.jpg" class="img-fluid">
   <h3>La Planchada</h3>
   <p>La versión más conocida de la leyenda relata la historia de Eulalia, una joven enfermera que se enamoró profundamente de un médico con quien trabajaba en el hospital.
 
@@ -231,111 +121,33 @@ El golpe emocional fue devastador. La enfermera, antes destacada por su puntuali
 Cometía errores médicos, olvidaba administrar medicamentos y, eventualmente, causó la muerte de varios pacientes. Consumida por la culpa, murió en circunstancias confusas. Algunas versiones afirman que se suicidó, otras que falleció de una enfermedad fulminante mientras cumplía su turno.
 
 Desde entonces, su alma no encontró paz. Así fue como se dedicó a recorrer los pasillos del hospital buscando enmendar los errores que cometió. Se aparece, especialmente por las noches, a los enfermos más graves, como si aún pudiera salvar vidas para redimirse.</p>
-</div>
+</article>
 
-<!-- HISTORIAS ANÓNIMAS -->
-<section id="historias">
-  <h2 class="mt-4">👁️ Historias Anónimas</h2>
+</section>
 
-  <form id="formHistoria" class="mt-3">
-    <textarea id="textoHistoria" class="form-control" placeholder="Cuenta tu historia..." required></textarea>
+<!-- HISTORIAS -->
+<section id="historias" class="seccion">
 
-    <input type="file" id="fotoHistoria" class="form-control mt-2">
+<h2>👁️ Historias Anónimas</h2>
 
-    <button class="mt-2">Publicar historia</button>
-  </form>
+<form id="formHistoria">
+  <textarea id="textoHistoria" class="form-control" placeholder="Cuenta tu historia..." required></textarea>
+  <input type="file" id="fotoHistoria" class="form-control mt-2">
+  <button class="btn btn-danger mt-2">Publicar</button>
+</form>
 
-  <div id="listaHistorias"></div>
+<section id="listaHistorias"></section>
+
 </section>
 
 </main>
 
-<footer class="text-center p-4 mt-4">
+<footer class="text-center p-4">
   <p>⚠️ No veas esta página de noche ⚠️</p>
 </footer>
 
-<!-- BOTON FLECHA -->
-<button id="btnArriba">⬆</button>
+<button id="btnArriba" class="btn btn-danger">⬆</button>
 
-<script>
-
-// ===== HISTORIAS =====
-let historias = [];
-
-const form = document.getElementById("formHistoria");
-const lista = document.getElementById("listaHistorias");
-
-form.addEventListener("submit", function(e){
-  e.preventDefault();
-
-  const texto = document.getElementById("textoHistoria").value;
-  const foto = document.getElementById("fotoHistoria").files[0];
-
-  let imgURL = "";
-
-  if(foto){
-    imgURL = URL.createObjectURL(foto);
-  }
-
-  historias.push({texto, img: imgURL});
-
-  mostrar();
-  form.reset();
-});
-
-function mostrar(){
-  lista.innerHTML = "";
-
-  historias.forEach((h, i) => {
-
-    const div = document.createElement("div");
-    div.classList.add("historia");
-
-    div.innerHTML = `
-      <p>${h.texto}</p>
-      ${h.img ? `<img src="${h.img}">` : ""}
-
-      <button onclick="editar(${i})">✏️ Editar</button>
-      <button onclick="eliminar(${i})">🗑️ Eliminar</button>
-    `;
-
-    lista.appendChild(div);
-  });
-}
-
-function eliminar(i){
-  historias.splice(i,1);
-  mostrar();
-}
-
-function editar(i){
-  let nuevo = prompt("Edita tu historia:", historias[i].texto);
-
-  if(nuevo){
-    historias[i].texto = nuevo;
-    mostrar();
-  }
-}
-
-// ===== BOTON VOLVER ARRIBA =====
-const btn = document.getElementById("btnArriba");
-
-window.onscroll = function(){
-  if(document.documentElement.scrollTop > 200){
-    btn.style.display = "block";
-  } else {
-    btn.style.display = "none";
-  }
-};
-
-btn.onclick = function(){
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-};
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
