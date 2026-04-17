@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout Bootstrap</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .contenedor {
+      border: 6px solid rgb(65, 22, 65);
+    }
+
+    .seccion {
+      min-height: 100vh;
+      border: 4px solid rgb(9, 99, 1);
+      padding: 10px;
+    }
+
+    .caja {
+      border: 4px solid rgb(114, 173, 221);
+      text-align: center;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    .verde { background-color: #dff0d8; }
+    .azul { background-color: #d9e6f7; }
+    .amarillo { background-color: #00c86a; }
+    .rosado { background-color: #d2779d; }
+
+    .borde-rojo { border: 4px solid red; }
+    .borde-azul { border: 4px solid #e00047; }
+  </style>
+</head>
+
+<body>
+
+<div class="container-fluid contenedor">
+
+  <div class="seccion">
+    <div class="caja verde mb-2">CAJA</div>
+    <div class="caja azul mb-2">CAJA</div>
+    <div class="caja morado borde-azul h-25 d-flex align-items-center justify-content-center ">
+      CAJA
+    </div>
+  </div>
+
+  <div class="seccion row">
+    <div class="col-8">
+      <div class="caja rosado h-100 borde-rojo d-flex align-items-center justify-content-center">
+        CAJA
+      </div>
+    </div>
+
+    <div class="col-4 borde-rojo">
+      <div class="caja verde mb-2 borde-azul">CAJA</div>
+      <div class="caja rosado mb-2 borde-azul h-50 d-flex align-items-center justify-content-center">
+        CAJA
+      </div>
+      <div class="caja rosado borde-azul h-25 d-flex align-items-center justify-content-center">
+        CAJA
+      </div>
+    </div>
+  </div>
+
+  <div class="seccion row">
+    <div class="col-8">
+      <div class="caja azul h-100 borde-rojo d-flex align-items-center justify-content-center">
+        CAJA
+      </div>
+    </div>
+
+    <div class="col-4 borde-rojo">
+      <div class="caja azul borde-azul h-50 d-flex align-items-center justify-content-center mb-2">
+        CAJA
+      </div>
+      <div class="caja azul borde-azul h-50 d-flex align-items-center justify-content-center">
+        CAJA
+      </div>
+    </div>
+  </div>
+
+<div class="seccion seccion-final">
+  <div class="caja verde borde-rojo mb-2">CAJA</div>
+
+  <div class="row borde-rojo">
+    <div class="col caja verde borde-azul">CAJA</div>
+    <div class="col caja verde borde-azul">CAJA</div>
+    <div class="col caja verde borde-azul">CAJA</div>
+    <div class="col caja verde borde-azul">CAJA</div>
+  </div>
+
+  <div class="caja verde borde-rojo mt-2">CAJA</div>
+</div>
+
+</div>
+
+</body>
+</html>
