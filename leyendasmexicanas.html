@@ -109,6 +109,11 @@ header{
 <nav class="text-center p-3">
   <button class="btn btn-danger mx-2" onclick="mostrarSeccion('inicio')">Inicio</button>
   <button class="btn btn-outline-danger mx-2" onclick="mostrarSeccion('historias')">Historias</button>
+  <button class="btn btn-outline-danger mx-2" onclick="mostrarSeccion('destacada')">Destacada</button>
+  <button class="btn btn-outline-danger mx-2" onclick="mostrarSeccion('galeria')">Galería</button>
+  <button class="btn btn-outline-danger mx-2" onclick="mostrarSeccion('curiosidades')">Curiosidades</button>
+  <button class="btn btn-outline-danger mx-2" onclick="mostrarSeccion('top')">Top</button>
+  <button class="btn btn-outline-danger mx-2" onclick="mostrarSeccion('advertencia')">⚠️</button>
 </nav>
 
 <header>
@@ -234,6 +239,57 @@ Desde entonces, su alma no encontró paz. Así fue como se dedicó a recorrer lo
 
 </section>
 
+<!-- ===== NUEVAS SECCIONES ===== -->
+
+<section id="destacada" class="seccion">
+  <h2 class="mt-4">🔥 Leyenda del Día</h2>
+  <div class="card-terror">
+    <h3>El Nahual</h3>
+    <p>Se dice que los nahuales pueden transformarse en animales durante la noche...</p>
+  </div>
+</section>
+
+<section id="galeria" class="seccion">
+  <h2 class="mt-4">🖼️ Galería de Terror</h2>
+  <div class="row">
+    <div class="col-md-4"><img src="llorona.png" class="img-fluid mb-3"></div>
+    <div class="col-md-4"><img src="el charro negro.png" class="img-fluid mb-3"></div>
+    <div class="col-md-4"><img src="la planchada.png" class="img-fluid mb-3"></div>
+  </div>
+</section>
+
+<section id="curiosidades" class="seccion">
+  <h2 class="mt-4">🧠 Curiosidades</h2>
+  <div class="card-terror">
+    <ul>
+      <li>Muchas leyendas nacieron en la época colonial.</li>
+      <li>Existen versiones distintas según la región.</li>
+      <li>La Llorona aparece en varios países.</li>
+      <li>El Charro Negro está ligado a pactos oscuros.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="top" class="seccion">
+  <h2 class="mt-4">🏆 Top Leyendas</h2>
+  <div class="card-terror">
+    <ol>
+      <li>La Llorona</li>
+      <li>El Charro Negro</li>
+      <li>La Planchada</li>
+      <li>El Nahual</li>
+      <li>La Pascualita</li>
+    </ol>
+  </div>
+</section>
+
+<section id="advertencia" class="seccion">
+  <h2 class="mt-4">⚠️ Advertencia</h2>
+  <div class="card-terror">
+    <p class="parpadeo">Si escuchas un llanto... no mires atrás.</p>
+  </div>
+</section>
+
 </main>
 
 <footer class="text-center p-4 mt-4">
@@ -244,7 +300,7 @@ Desde entonces, su alma no encontró paz. Así fue como se dedicó a recorrer lo
 
 <script>
 
-/* ===== SPA ===== */
+/* SPA */
 function mostrarSeccion(id){
   document.querySelectorAll(".seccion").forEach(sec=>{
     sec.classList.remove("activa");
@@ -252,9 +308,8 @@ function mostrarSeccion(id){
   document.getElementById(id).classList.add("activa");
 }
 
-/* ===== HISTORIAS ===== */
+/* HISTORIAS */
 let historias = [];
-
 const form = document.getElementById("formHistoria");
 const lista = document.getElementById("listaHistorias");
 
@@ -299,7 +354,7 @@ function editar(i){
   }
 }
 
-/* ===== BOTON ARRIBA ===== */
+/* BOTON ARRIBA */
 const btn = document.getElementById("btnArriba");
 
 window.onscroll = function(){
