@@ -2,11 +2,13 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Adopción Mascotas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AdoptaApp PRO</title>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <style>
+
 body {
   background: linear-gradient(-45deg, #6d28d9, #c084fc, #e879f9, #9333ea);
   background-size: 400% 400%;
@@ -20,38 +22,37 @@ body {
   100% {background-position: 0% 50%;}
 }
 
-header {
-  background: linear-gradient(135deg, #4c1d95, #c084fc);
-  color: white;
-  border-radius: 0 0 30px 30px;
+nav{
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
 }
 
-section.card {
+.card{
   background: rgba(255,255,255,0.2);
   backdrop-filter: blur(15px);
   border-radius: 20px;
 }
 
-button {
+button{
   background: linear-gradient(135deg, #9333ea, #e879f9);
-  border: none;
-  color: white;
+  border:none;
+  color:white;
+  transition:0.3s;
+  border-radius:8px;
+  padding:6px 10px;
 }
 
-button:hover {
-  transform: scale(1.05);
+button:hover{
+  transform:scale(1.05);
 }
 
-.oculto {
-  display: none;
-}
+.oculto{ display:none; }
 
-/* NUEVO: tarjetas bonitas */
 .mascota-card{
-  background: rgba(0,0,0,0.3);
-  border-radius: 15px;
-  padding: 15px;
-  margin-top: 10px;
+  background: rgba(0,0,0,0.4);
+  border-radius:15px;
+  padding:15px;
+  margin-top:10px;
   display:flex;
   gap:15px;
   align-items:center;
@@ -63,121 +64,206 @@ button:hover {
   border-radius:10px;
   object-fit:cover;
 }
+
+.form-adopcion{
+  max-width:500px;
+  margin:auto;
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN -->
-<main class="container mt-5" id="loginSection">
-<section class="card p-4 shadow text-center">
+<nav class="navbar navbar-dark px-4">
+<span class="navbar-brand">🐾 AdoptaApp PRO</span>
 
+<div>
+<button class="btn btn-light btn-sm" onclick="vista('inicio')">Inicio</button>
+<button class="btn btn-light btn-sm" onclick="vista('app')">Mascotas</button>
+<button class="btn btn-light btn-sm" onclick="vista('favoritos')">Favoritos</button>
+<button class="btn btn-light btn-sm" onclick="vista('adoptar')">Adoptar</button>
+</div>
+</nav>
+
+<!-- LOGIN -->
+<main class="container mt-5 vista" id="loginSection">
+<section class="card p-4 text-center">
 <h2>🔐 Iniciar Sesión</h2>
 
-<input type="text" id="loginUser" class="form-control mt-3" placeholder="Usuario">
+<input id="loginUser" class="form-control mt-3" placeholder="Usuario">
 <input type="password" id="loginPass" class="form-control mt-3" placeholder="Contraseña">
 
 <button class="mt-4 w-100" onclick="login()">Entrar</button>
 
-<p class="mt-3">
-¿No tienes cuenta? 
-<a href="#" onclick="mostrarRegistro()">Regístrate</a>
-</p>
-
-<p id="loginMsg"></p>
-
+<p class="mt-3"><a onclick="mostrarRegistro()">Registrarse</a></p>
+<div id="loginMsg"></div>
 </section>
 </main>
 
 <!-- REGISTRO -->
-<main class="container mt-5 oculto" id="registroSection">
-<section class="card p-4 shadow text-center">
-
+<main class="container mt-5 oculto vista" id="registroSection">
+<section class="card p-4 text-center">
 <h2>📝 Crear Cuenta</h2>
 
-<input type="text" id="regUser" class="form-control mt-3" placeholder="Usuario">
+<input id="regUser" class="form-control mt-3" placeholder="Usuario">
 <input type="password" id="regPass" class="form-control mt-3" placeholder="Contraseña">
 
 <button class="mt-4 w-100" onclick="registrar()">Registrarse</button>
 
-<p class="mt-3">
-¿Ya tienes cuenta? 
-<a href="#" onclick="mostrarLogin()">Inicia sesión</a>
-</p>
-
-<p id="regMsg"></p>
-
+<p class="mt-3"><a onclick="mostrarLogin()">Volver</a></p>
+<div id="regMsg"></div>
 </section>
 </main>
 
 <!-- APP -->
-<section id="appSection" class="oculto">
-
-<header class="text-center p-4 shadow">
-  <h1>🐶 Adopción Mascotas</h1>
-  <p id="bienvenida"></p>
-  <button onclick="logout()">Cerrar sesión</button>
+<section id="appSection" class="oculto vista">
+<header class="text-center p-4">
+<h1>🐶 Gestión de Mascotas</h1>
+<p id="bienvenida"></p>
+<p id="stats"></p>
+<button onclick="logout()">Cerrar sesión</button>
 </header>
 
-<main class="container mt-4">
-
-<!-- FORM ORIGINAL + NUEVO CAMPO IMAGEN -->
-<section class="card p-4 shadow">
-
+<main class="container">
+<section class="card p-4">
 <form id="formMascota">
 <input type="hidden" id="editIndex">
-
-<input type="text" id="nombre" class="form-control mt-2" placeholder="Nombre">
-<input type="number" id="edad" class="form-control mt-2" placeholder="Edad">
-<input type="text" id="tipo" class="form-control mt-2" placeholder="Tipo">
-
-<!-- NUEVO -->
-<input type="text" id="imagen" class="form-control mt-2" placeholder="URL imagen (opcional)">
-
+<input id="nombre" class="form-control mt-2" placeholder="Nombre">
+<input id="edad" type="number" class="form-control mt-2" placeholder="Edad">
+<input id="tipo" class="form-control mt-2" placeholder="Tipo">
+<input id="imagen" class="form-control mt-2" placeholder="URL imagen">
 <button class="mt-3 w-100">Guardar</button>
+</form>
+</section>
+
+<input id="buscar" class="form-control mt-3" placeholder="Buscar...">
+<section id="listaMascotas"></section>
+</main>
+</section>
+
+<!-- ADOPTAR -->
+<section id="adoptarSection" class="container mt-4 oculto vista">
+<h3>🐾 Mascotas disponibles</h3>
+<div id="catalogo"></div>
+</section>
+
+<!-- FORM ADOPCIÓN -->
+<section id="formAdopcionSection" class="container mt-4 oculto vista">
+
+<h3>📝 Formulario de Adopción</h3>
+
+<div id="mascotaSeleccionada" class="mb-3"></div>
+
+<form class="form-adopcion" onsubmit="enviarAdopcion(event)">
+<input class="form-control mb-2" id="nombreAdop" placeholder="Tu nombre" required>
+<input class="form-control mb-2" id="telefonoAdop" placeholder="Teléfono" required>
+<textarea class="form-control mb-2" id="motivoAdop" placeholder="¿Por qué quieres adoptar?" required></textarea>
+
+<button class="w-100">Enviar solicitud</button>
 </form>
 
 </section>
 
-<section class="mt-3">
-<input type="text" id="buscar" class="form-control" placeholder="Buscar...">
-</section>
-
-<section id="listaMascotas"></section>
-
-</main>
-
-</section>
-
-<!-- MODAL ADOPCIÓN -->
-<div class="modal fade" id="modalAdopcion">
-<div class="modal-dialog">
-<div class="modal-content bg-dark text-white">
-
-<div class="modal-header">
-<h5>Formulario de adopción 🐾</h5>
-</div>
-
-<div class="modal-body">
-<input class="form-control mb-2" placeholder="Tu nombre">
-<input class="form-control mb-2" placeholder="Teléfono">
-<textarea class="form-control" placeholder="¿Por qué quieres adoptar?"></textarea>
-</div>
-
-<div class="modal-footer">
-<button class="btn btn-success" onclick="alert('Solicitud enviada 💜')">Enviar</button>
-</div>
-
-</div>
-</div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
 
-// USUARIOS
+// DATOS
 let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+let mascotas = JSON.parse(localStorage.getItem("mascotas")) || [];
+let mascotaSeleccionada = null;
+
+// CATÁLOGO
+let catalogoMascotas = [
+{nombre:"Luna",edad:2,tipo:"Gato",img:"https://images.unsplash.com/photo-1518791841217-8f162f1e1131"},
+{nombre:"Max",edad:3,tipo:"Perro",img:"https://images.unsplash.com/photo-1558788353-f76d92427f16"},
+];
+
+// SPA
+function vista(v){
+document.querySelectorAll(".vista").forEach(s=>s.classList.add("oculto"));
+
+if(v==="inicio") loginSection.classList.remove("oculto");
+if(v==="app") appSection.classList.remove("oculto");
+if(v==="adoptar"){
+adoptarSection.classList.remove("oculto");
+mostrarCatalogo();
+}
+if(v==="formAdopcion") formAdopcionSection.classList.remove("oculto");
+}
+
+// LOGIN
+function registrar(){
+usuarios.push({user:regUser.value,pass:regPass.value});
+localStorage.setItem("usuarios",JSON.stringify(usuarios));
+alert("Cuenta creada");
+}
+
+function login(){
+let u=usuarios.find(x=>x.user===loginUser.value && x.pass===loginPass.value);
+if(u){
+localStorage.setItem("usuarioActivo",u.user);
+iniciarApp();
+}else alert("Error");
+}
+
+function iniciarApp(){
+vista("app");
+bienvenida.textContent="Hola "+localStorage.getItem("usuarioActivo");
+render();
+}
+
+// RENDER
+function render(){
+listaMascotas.innerHTML="";
+mascotas.forEach(m=>{
+listaMascotas.innerHTML+=`<div class="mascota-card"><img src="${m.img}"><div>${m.nombre}</div></div>`;
+});
+}
+
+// CATÁLOGO
+function mostrarCatalogo(){
+catalogo.innerHTML="";
+catalogoMascotas.forEach((m,i)=>{
+catalogo.innerHTML+=`
+<div class="mascota-card">
+<img src="${m.img}">
+<div>
+<h5>${m.nombre}</h5>
+<p>${m.tipo}</p>
+<button onclick="irFormulario(${i})">Ver más / Adoptar</button>
+</div>
+</div>`;
+});
+}
+
+// IR FORM
+function irFormulario(i){
+mascotaSeleccionada = catalogoMascotas[i];
+
+vista("formAdopcion");
+
+mascotaSeleccionadaDiv.innerHTML=`
+<div class="mascota-card">
+<img src="${mascotaSeleccionada.img}">
+<div>
+<h5>${mascotaSeleccionada.nombre}</h5>
+<p>${mascotaSeleccionada.tipo}</p>
+</div>
+</div>`;
+}
+
+// ENVIAR
+function enviarAdopcion(e){
+e.preventDefault();
+
+mascotas.push(mascotaSeleccionada);
+localStorage.setItem("mascotas",JSON.stringify(mascotas));
+
+alert("🎉 Solicitud enviada y mascota adoptada");
+
+vista("app");
+render();
+}
 
 // VISTAS
 function mostrarRegistro(){
@@ -188,148 +274,6 @@ registroSection.classList.remove("oculto");
 function mostrarLogin(){
 registroSection.classList.add("oculto");
 loginSection.classList.remove("oculto");
-}
-
-// REGISTRO
-function registrar(){
-let user = regUser.value;
-let pass = regPass.value;
-
-if(user===""||pass===""){
-regMsg.textContent="❌ Completa campos";
-return;
-}
-
-if(usuarios.find(u=>u.user===user)){
-regMsg.textContent="⚠️ Ya existe";
-return;
-}
-
-usuarios.push({user,pass});
-localStorage.setItem("usuarios",JSON.stringify(usuarios));
-
-regMsg.textContent="✅ Usuario creado";
-}
-
-// LOGIN
-function login(){
-let user = loginUser.value;
-let pass = loginPass.value;
-
-let valido = usuarios.find(u=>u.user===user && u.pass===pass);
-
-if(valido){
-localStorage.setItem("usuarioActivo",user);
-iniciarApp();
-}else{
-loginMsg.textContent="❌ Datos incorrectos";
-}
-}
-
-// LOGOUT
-function logout(){
-localStorage.removeItem("usuarioActivo");
-location.reload();
-}
-
-// APP
-function iniciarApp(){
-loginSection.classList.add("oculto");
-registroSection.classList.add("oculto");
-appSection.classList.remove("oculto");
-
-bienvenida.textContent="Bienvenida "+localStorage.getItem("usuarioActivo")+" 💜";
-mostrar(mascotas);
-}
-
-// MASCOTAS
-let mascotas = JSON.parse(localStorage.getItem("mascotas")) || [];
-
-function guardar(){
-localStorage.setItem("mascotas",JSON.stringify(mascotas));
-}
-
-// MOSTRAR MEJORADO + IMAGEN + ADOPTAR
-function mostrar(listaFiltrada){
-listaMascotas.innerHTML="";
-
-listaFiltrada.forEach((m,i)=>{
-
-let img = m.img || "https://source.unsplash.com/100x100/?pet";
-
-let card=document.createElement("article");
-card.classList.add("mascota-card");
-
-card.innerHTML=`
-<img src="${img}">
-<div>
-<h5>${m.nombre}</h5>
-<p>${m.tipo} - ${m.edad} años</p>
-<button onclick="editar(${i})">Editar</button>
-<button onclick="eliminar(${i})">Eliminar</button>
-<button onclick="abrirModal()">Adoptar</button>
-</div>
-`;
-
-listaMascotas.appendChild(card);
-
-});
-}
-
-// FORM
-formMascota.addEventListener("submit",function(e){
-e.preventDefault();
-
-let mascota={
-nombre:nombre.value,
-edad:edad.value,
-tipo:tipo.value,
-img: imagen.value
-};
-
-let index=editIndex.value;
-
-if(index===""){
-mascotas.push(mascota);
-}else{
-mascotas[index]=mascota;
-}
-
-guardar();
-mostrar(mascotas);
-
-formMascota.reset();
-editIndex.value="";
-});
-
-// FUNCIONES
-function eliminar(i){
-mascotas.splice(i,1);
-guardar();
-mostrar(mascotas);
-}
-
-function editar(i){
-let m=mascotas[i];
-
-nombre.value=m.nombre;
-edad.value=m.edad;
-tipo.value=m.tipo;
-imagen.value=m.img || "";
-editIndex.value=i;
-}
-
-// BUSCADOR
-buscar.addEventListener("input",function(){
-let texto=this.value.toLowerCase();
-
-let filtradas=mascotas.filter(m=>m.nombre.toLowerCase().includes(texto));
-mostrar(filtradas);
-});
-
-// MODAL
-function abrirModal(){
-new bootstrap.Modal(document.getElementById("modalAdopcion")).show();
 }
 
 // AUTO LOGIN
