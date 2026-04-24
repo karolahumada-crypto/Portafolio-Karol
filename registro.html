@@ -4,191 +4,684 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AdoptaApp PRO</title>
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-body {
-  background: linear-gradient(-45deg, #6d28d9, #c084fc, #e879f9, #9333ea);
-  background-size: 400% 400%;
-  animation: fondo 10s ease infinite;
-  color:white;
+
+:root{
+  --morado:#6d28d9;
+  --morado-claro:#9333ea;
+  --vino:#7f1d1d;
+  --vino-medio:#991b1b;
+  --negro:#0a0a0f;
+  --negro-2:#13131a;
+  --negro-3:#1c1c28;
+  --acento:#c084fc;
+  --acento2:#f87171;
+  --blanco:#f5f0ff;
+  --texto-muted:rgba(245,240,255,0.55);
+  --glass:rgba(255,255,255,0.06);
+  --glass-borde:rgba(255,255,255,0.10);
 }
-@keyframes fondo {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background: var(--negro);
+  color:var(--blanco);
+  min-height:100vh;
+  overflow-x:hidden;
+  position:relative;
 }
-.card{
-  background: rgba(255,255,255,0.2);
-  border-radius:20px;
+
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(109,40,217,0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 100%, rgba(127,29,29,0.65) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(153,27,27,0.2) 0%, transparent 70%),
+    linear-gradient(160deg, var(--negro) 0%, var(--negro-2) 50%, var(--negro-3) 100%);
+  z-index:0;
+  pointer-events:none;
 }
-.oculto{display:none;}
-.mascota-card{
-  background: rgba(0,0,0,0.4);
-  padding:15px;
-  margin-top:10px;
+
+body::after{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(192,132,252,0.08) 0, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(248,113,113,0.06) 0, transparent 40%);
+  z-index:0;
+  pointer-events:none;
+  animation:shift 14s ease-in-out infinite alternate;
+}
+
+@keyframes shift{
+  from{opacity:0.6;}
+  to{opacity:1;}
+}
+
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(10,10,15,0.85);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--glass-borde);
+  padding:14px 28px;
   display:flex;
-  gap:15px;
-  border-radius:15px;
+  align-items:center;
+  justify-content:space-between;
 }
+
+.brand{
+  font-family:'Playfair Display',serif;
+  font-size:1.35rem;
+  font-weight:700;
+  letter-spacing:-0.01em;
+  background:linear-gradient(90deg,#c084fc,#f87171);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.nav-links{display:flex;gap:8px;flex-wrap:wrap;}
+
+.nav-btn{
+  background:transparent;
+  border:1px solid var(--glass-borde);
+  color:rgba(245,240,255,0.75);
+  font-family:'DM Sans',sans-serif;
+  font-size:0.82rem;
+  font-weight:500;
+  padding:7px 16px;
+  border-radius:50px;
+  cursor:pointer;
+  transition:all 0.25s;
+  letter-spacing:0.02em;
+}
+
+.nav-btn:hover{
+  background:rgba(192,132,252,0.15);
+  border-color:rgba(192,132,252,0.4);
+  color:var(--blanco);
+  transform:none;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.contenedor{
+  position:relative;
+  z-index:1;
+  max-width:680px;
+  margin:0 auto;
+  padding:40px 20px;
+}
+
+/* CARD GLASS */
+.card{
+  background:var(--glass);
+  border:1px solid var(--glass-borde);
+  border-radius:24px;
+  padding:36px;
+  backdrop-filter:blur(20px);
+}
+
+/* TITULOS */
+h1,h2,h3{font-family:'Playfair Display',serif;}
+h2{font-size:1.7rem;font-weight:700;margin-bottom:8px;}
+h3{font-size:1.3rem;font-weight:700;margin-bottom:16px;}
+
+.subtitulo{color:var(--texto-muted);font-size:0.9rem;margin-bottom:24px;}
+
+/* INPUTS */
+input,textarea,select{
+  width:100%;
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--glass-borde);
+  border-radius:12px;
+  color:var(--blanco);
+  font-family:'DM Sans',sans-serif;
+  font-size:0.95rem;
+  padding:13px 16px;
+  margin-bottom:12px;
+  outline:none;
+  transition:border-color 0.2s,background 0.2s;
+}
+
+input::placeholder,textarea::placeholder{color:var(--texto-muted);}
+
+input:focus,textarea:focus{
+  border-color:rgba(192,132,252,0.5);
+  background:rgba(192,132,252,0.06);
+}
+
+/* BOTONES */
+.btn-primary{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:none;
+  cursor:pointer;
+  font-family:'DM Sans',sans-serif;
+  font-size:0.95rem;
+  font-weight:500;
+  letter-spacing:0.03em;
+  transition:all 0.25s;
+  background:linear-gradient(135deg,var(--morado),var(--vino-medio));
+  color:var(--blanco);
+  position:relative;
+  overflow:hidden;
+}
+
+.btn-primary::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(135deg,var(--morado-claro),#be3030);
+  opacity:0;
+  transition:opacity 0.25s;
+}
+
+.btn-primary:hover::before{opacity:1;}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(109,40,217,0.35);}
+.btn-primary span{position:relative;z-index:1;}
+
+.btn-sm{
+  padding:8px 18px;
+  border-radius:50px;
+  border:1px solid rgba(192,132,252,0.35);
+  background:rgba(192,132,252,0.1);
+  color:var(--acento);
+  font-family:'DM Sans',sans-serif;
+  font-size:0.82rem;
+  font-weight:500;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+
+.btn-sm:hover{background:rgba(192,132,252,0.2);border-color:var(--acento);transform:none;}
+
+.btn-danger{
+  background:rgba(127,29,29,0.3);
+  border:1px solid rgba(248,113,113,0.25);
+  color:var(--acento2);
+  font-family:'DM Sans',sans-serif;
+  font-size:0.82rem;
+  padding:7px 16px;
+  border-radius:50px;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+
+.btn-danger:hover{background:rgba(248,113,113,0.15);border-color:var(--acento2);}
+
+.link{
+  color:var(--acento);
+  cursor:pointer;
+  text-decoration:none;
+  font-size:0.9rem;
+  transition:color 0.2s;
+}
+.link:hover{color:#e0aaff;}
+
+/* OCULTO */
+.oculto{display:none!important;}
+
+/* HERO LOGIN */
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(192,132,252,0.1);
+  border:1px solid rgba(192,132,252,0.25);
+  border-radius:50px;
+  padding:6px 14px;
+  font-size:0.78rem;
+  color:var(--acento);
+  margin-bottom:20px;
+  letter-spacing:0.05em;
+}
+
+/* MASCOTA CARD */
+.mascota-card{
+  background:var(--glass);
+  border:1px solid var(--glass-borde);
+  border-radius:16px;
+  padding:16px;
+  margin-bottom:12px;
+  display:flex;
+  gap:16px;
+  align-items:center;
+  transition:border-color 0.2s,background 0.2s;
+}
+
+.mascota-card:hover{
+  border-color:rgba(192,132,252,0.3);
+  background:rgba(192,132,252,0.05);
+}
+
 .mascota-card img{
-  width:90px;
-  height:90px;
+  width:80px;
+  height:80px;
+  border-radius:12px;
   object-fit:cover;
-  border-radius:10px;
+  border:1px solid var(--glass-borde);
+  flex-shrink:0;
 }
+
+.mascota-info h5{
+  font-size:1rem;
+  font-family:'Playfair Display',serif;
+  margin-bottom:4px;
+}
+
+.mascota-info p{
+  font-size:0.82rem;
+  color:var(--texto-muted);
+  margin-bottom:8px;
+}
+
+.tag{
+  display:inline-block;
+  background:rgba(192,132,252,0.12);
+  border:1px solid rgba(192,132,252,0.2);
+  color:var(--acento);
+  font-size:0.72rem;
+  padding:3px 10px;
+  border-radius:50px;
+  margin-right:6px;
+  letter-spacing:0.03em;
+}
+
+.tag.vino{
+  background:rgba(127,29,29,0.2);
+  border-color:rgba(248,113,113,0.2);
+  color:var(--acento2);
+}
+
+/* STATS */
+.stats-row{
+  display:flex;
+  gap:12px;
+  margin-bottom:28px;
+}
+
+.stat-chip{
+  flex:1;
+  background:var(--glass);
+  border:1px solid var(--glass-borde);
+  border-radius:14px;
+  padding:14px 16px;
+  text-align:center;
+}
+
+.stat-chip .num{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;
+  font-weight:700;
+  background:linear-gradient(90deg,#c084fc,#f87171);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+
+.stat-chip .lbl{font-size:0.75rem;color:var(--texto-muted);margin-top:2px;}
+
+/* BIENVENIDA */
+.bienvenida-bar{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:24px;
+}
+
+/* BUSCAR */
+.buscar-wrap{position:relative;margin-bottom:20px;}
+.buscar-wrap input{padding-left:42px;margin-bottom:0;}
+.buscar-icon{
+  position:absolute;
+  left:14px;
+  top:50%;
+  transform:translateY(-50%);
+  color:var(--texto-muted);
+  font-size:1rem;
+  pointer-events:none;
+}
+
+/* SECCION TITULO */
+.seccion-titulo{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;
+  font-weight:700;
+  margin-bottom:6px;
+}
+
+.divider{
+  height:1px;
+  background:linear-gradient(90deg,rgba(192,132,252,0.3),rgba(248,113,113,0.2),transparent);
+  margin-bottom:24px;
+  margin-top:12px;
+}
+
+/* FORM ADOPCION */
+.adoptar-pet-card{
+  background:linear-gradient(135deg,rgba(109,40,217,0.15),rgba(127,29,29,0.15));
+  border:1px solid rgba(192,132,252,0.2);
+  border-radius:16px;
+  padding:16px;
+  display:flex;
+  gap:16px;
+  align-items:center;
+  margin-bottom:24px;
+}
+
+.adoptar-pet-card img{
+  width:70px;height:70px;border-radius:10px;object-fit:cover;flex-shrink:0;
+}
+
+/* ALERTA */
+.msg{
+  margin-top:12px;
+  padding:10px 14px;
+  border-radius:10px;
+  font-size:0.87rem;
+  display:none;
+}
+
+.msg.ok{background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:#6ee7b7;}
+.msg.err{background:rgba(127,29,29,0.2);border:1px solid rgba(248,113,113,0.2);color:var(--acento2);}
+
+/* EMPTY STATE */
+.empty-state{
+  text-align:center;
+  padding:40px 20px;
+  color:var(--texto-muted);
+}
+.empty-state .icon{font-size:2.5rem;margin-bottom:12px;opacity:0.5;}
+
+/* SCROLL */
+::-webkit-scrollbar{width:6px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:rgba(192,132,252,0.3);border-radius:99px;}
+
 </style>
 </head>
-
 <body>
 
-<!-- LOGIN -->
-<main class="container mt-5" id="loginSection">
-<section class="card p-4 text-center">
+<!-- NAV -->
+<nav>
+  <span class="brand">🐾 AdoptaApp PRO</span>
+  <div class="nav-links">
+    <button class="nav-btn" onclick="vista('inicio')">Inicio</button>
+    <button class="nav-btn" onclick="vista('app')">Mis mascotas</button>
+    <button class="nav-btn" onclick="vista('adoptar')">Adoptar</button>
+  </div>
+</nav>
 
-<h2>🔐 Iniciar Sesión</h2>
-
-<input id="loginUser" class="form-control mt-3" placeholder="Usuario">
-<input type="password" id="loginPass" class="form-control mt-3" placeholder="Contraseña">
-
-<button class="mt-4 w-100 btn btn-dark" onclick="login()">Entrar</button>
-
-<p class="mt-3"><a onclick="mostrarRegistro()">Registrarse</a></p>
-
-<p id="msg"></p>
-
-</section>
-</main>
-
-<!-- REGISTRO -->
-<main class="container mt-5 oculto" id="registroSection">
-<section class="card p-4 text-center">
-
-<h2>📝 Registro</h2>
-
-<input id="regUser" class="form-control mt-3" placeholder="Usuario">
-<input type="password" id="regPass" class="form-control mt-3" placeholder="Contraseña">
-
-<button class="mt-4 w-100 btn btn-success" onclick="registrar()">Crear cuenta</button>
-
-<p class="mt-3"><a onclick="mostrarLogin()">Volver</a></p>
-
-<p id="msgReg"></p>
-
-</section>
-</main>
-
-<!-- APP -->
-<section id="appSection" class="oculto">
-<div class="container mt-4">
-<h2 id="bienvenida"></h2>
-
-<button class="btn btn-danger" onclick="logout()">Cerrar sesión</button>
-
-<div id="listaMascotas"></div>
+<!-- ===== LOGIN ===== -->
+<div class="contenedor vista" id="loginSection">
+  <div style="text-align:center;margin-bottom:32px;">
+    <div class="hero-badge">✦ PLATAFORMA DE ADOPCIÓN</div>
+    <h2>Bienvenido de vuelta</h2>
+    <p class="subtitulo">Inicia sesión para gestionar tus mascotas</p>
+  </div>
+  <div class="card">
+    <input id="loginUser" placeholder="Usuario">
+    <input type="password" id="loginPass" placeholder="Contraseña">
+    <button class="btn-primary" onclick="login()"><span>Entrar →</span></button>
+    <div id="loginMsg" class="msg"></div>
+    <p style="text-align:center;margin-top:20px;font-size:0.88rem;color:var(--texto-muted);">
+      ¿No tienes cuenta? <a class="link" onclick="mostrarRegistro()">Regístrate gratis</a>
+    </p>
+  </div>
 </div>
-</section>
+
+<!-- ===== REGISTRO ===== -->
+<div class="contenedor oculto vista" id="registroSection">
+  <div style="text-align:center;margin-bottom:32px;">
+    <div class="hero-badge">✦ NUEVA CUENTA</div>
+    <h2>Crear cuenta</h2>
+    <p class="subtitulo">Únete a nuestra comunidad de adopción</p>
+  </div>
+  <div class="card">
+    <input id="regUser" placeholder="Elige un usuario">
+    <input type="password" id="regPass" placeholder="Contraseña">
+    <button class="btn-primary" onclick="registrar()"><span>Crear cuenta →</span></button>
+    <div id="regMsg" class="msg"></div>
+    <p style="text-align:center;margin-top:20px;font-size:0.88rem;color:var(--texto-muted);">
+      ¿Ya tienes cuenta? <a class="link" onclick="mostrarLogin()">Inicia sesión</a>
+    </p>
+  </div>
+</div>
+
+<!-- ===== APP ===== -->
+<div class="contenedor oculto vista" id="appSection">
+
+  <div class="bienvenida-bar">
+    <div>
+      <p style="font-size:0.8rem;color:var(--texto-muted);letter-spacing:0.05em;text-transform:uppercase;">Panel principal</p>
+      <h3 id="bienvenida" style="margin-bottom:0;font-size:1.2rem;"></h3>
+    </div>
+    <button class="btn-danger" onclick="logout()">Salir</button>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-chip">
+      <div class="num" id="statTotal">0</div>
+      <div class="lbl">Adoptadas</div>
+    </div>
+    <div class="stat-chip">
+      <div class="num" id="statGatos">0</div>
+      <div class="lbl">Gatos</div>
+    </div>
+    <div class="stat-chip">
+      <div class="num" id="statPerros">0</div>
+      <div class="lbl">Perros</div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:20px;">
+    <h3 style="margin-bottom:16px;font-size:1rem;font-family:'DM Sans';color:var(--texto-muted);text-transform:uppercase;letter-spacing:0.08em;">Agregar mascota</h3>
+    <form id="formMascota" onsubmit="guardarMascota(event)">
+      <input type="hidden" id="editIndex">
+      <input id="nombre" placeholder="Nombre de la mascota">
+      <input id="edad" type="number" placeholder="Edad (años)">
+      <input id="tipo" placeholder="Tipo (Perro, Gato...)">
+      <input id="imagen" placeholder="URL de imagen">
+      <button type="submit" class="btn-primary"><span>Guardar mascota</span></button>
+    </form>
+  </div>
+
+  <div class="seccion-titulo">Mis mascotas</div>
+  <div class="divider"></div>
+
+  <div class="buscar-wrap">
+    <span class="buscar-icon">🔍</span>
+    <input id="buscar" placeholder="Buscar por nombre o tipo..." oninput="render()">
+  </div>
+
+  <div id="listaMascotas"></div>
+</div>
+
+<!-- ===== ADOPTAR ===== -->
+<div class="contenedor oculto vista" id="adoptarSection">
+  <div class="hero-badge">✦ CATÁLOGO</div>
+  <div class="seccion-titulo">Mascotas disponibles</div>
+  <p class="subtitulo">Encuentra a tu compañero ideal y dale un hogar</p>
+  <div class="divider"></div>
+  <div id="catalogo"></div>
+</div>
+
+<!-- ===== FORM ADOPCIÓN ===== -->
+<div class="contenedor oculto vista" id="formAdopcionSection">
+  <div class="hero-badge">✦ FORMULARIO</div>
+  <div class="seccion-titulo">Solicitud de adopción</div>
+  <div class="divider"></div>
+
+  <div id="mascotaSeleccionadaDiv" class="adoptar-pet-card"></div>
+
+  <div class="card">
+    <form onsubmit="enviarAdopcion(event)">
+      <input id="nombreAdop" placeholder="Tu nombre completo" required>
+      <input id="telefonoAdop" placeholder="Teléfono de contacto" required>
+      <textarea id="motivoAdop" placeholder="¿Por qué quieres adoptar a esta mascota?" required style="height:110px;resize:vertical;"></textarea>
+      <button type="submit" class="btn-primary"><span>Enviar solicitud 🐾</span></button>
+    </form>
+  </div>
+</div>
 
 <script>
-
-// DATOS
 let usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 let mascotas = JSON.parse(localStorage.getItem("mascotas")) || [];
+let mascotaSeleccionada = null;
 
-// REGISTRO MEJORADO
+let catalogoMascotas = [
+  {nombre:"Luna",edad:2,tipo:"Gato",img:"https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=200&q=80",desc:"Juguetona y cariñosa"},
+  {nombre:"Max",edad:3,tipo:"Perro",img:"https://images.unsplash.com/photo-1558788353-f76d92427f16?w=200&q=80",desc:"Leal y energético"},
+  {nombre:"Mía",edad:1,tipo:"Gato",img:"https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=200&q=80",desc:"Tranquila y adorable"},
+  {nombre:"Bruno",edad:4,tipo:"Perro",img:"https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=200&q=80",desc:"Amigable y obediente"},
+];
+
+function vista(v){
+  document.querySelectorAll(".vista").forEach(s=>s.classList.add("oculto"));
+  if(v==="inicio") loginSection.classList.remove("oculto");
+  if(v==="app") appSection.classList.remove("oculto");
+  if(v==="adoptar"){ adoptarSection.classList.remove("oculto"); mostrarCatalogo(); }
+  if(v==="formAdopcion") formAdopcionSection.classList.remove("oculto");
+}
+
+function showMsg(id,texto,tipo){
+  const el=document.getElementById(id);
+  el.textContent=texto;
+  el.className="msg "+tipo;
+  el.style.display="block";
+  setTimeout(()=>el.style.display="none",3000);
+}
+
 function registrar(){
-
-let user = regUser.value.trim();
-let pass = regPass.value.trim();
-
-if(!user || !pass){
-msgReg.textContent="❌ Completa todos los campos";
-return;
+  if(!regUser.value||!regPass.value) return showMsg("regMsg","Completa todos los campos","err");
+  if(usuarios.find(x=>x.user===regUser.value)) return showMsg("regMsg","Usuario ya existe","err");
+  usuarios.push({user:regUser.value,pass:regPass.value});
+  localStorage.setItem("usuarios",JSON.stringify(usuarios));
+  showMsg("regMsg","¡Cuenta creada con éxito!","ok");
+  setTimeout(()=>mostrarLogin(),1200);
 }
 
-if(usuarios.some(u=>u.user===user)){
-msgReg.textContent="⚠️ Usuario ya existe";
-return;
-}
-
-usuarios.push({user,pass});
-localStorage.setItem("usuarios",JSON.stringify(usuarios));
-
-msgReg.textContent="✅ Cuenta creada";
-}
-
-// LOGIN ARREGLADO
 function login(){
-
-let user = loginUser.value.trim();
-let pass = loginPass.value.trim();
-
-if(!user || !pass){
-msg.textContent="❌ Ingresa usuario y contraseña";
-return;
+  const u=usuarios.find(x=>x.user===loginUser.value && x.pass===loginPass.value);
+  if(u){ localStorage.setItem("usuarioActivo",u.user); iniciarApp(); }
+  else showMsg("loginMsg","Usuario o contraseña incorrectos","err");
 }
 
-let u = usuarios.find(x=>x.user===user && x.pass===pass);
-
-if(!u){
-msg.textContent="❌ Usuario o contraseña incorrectos";
-return;
-}
-
-localStorage.setItem("usuarioActivo",user);
-iniciarApp();
-}
-
-// APP
-function iniciarApp(){
-loginSection.classList.add("oculto");
-registroSection.classList.add("oculto");
-appSection.classList.remove("oculto");
-
-bienvenida.textContent="Hola "+localStorage.getItem("usuarioActivo");
-render();
-}
-
-// RENDER
-function render(){
-listaMascotas.innerHTML="";
-
-mascotas.forEach(m=>{
-listaMascotas.innerHTML+=`
-<div class="mascota-card">
-<img src="${m.img}">
-<div>
-<h5>${m.nombre}</h5>
-<p>${m.tipo}</p>
-</div>
-</div>`;
-});
-}
-
-// LOGOUT
 function logout(){
-localStorage.removeItem("usuarioActivo");
-location.reload();
+  localStorage.removeItem("usuarioActivo");
+  vista("inicio");
 }
 
-// VISTAS
+function iniciarApp(){
+  vista("app");
+  bienvenida.textContent="Hola, "+localStorage.getItem("usuarioActivo")+" 👋";
+  render();
+}
+
+function guardarMascota(e){
+  e.preventDefault();
+  const idx=editIndex.value;
+  const m={nombre:nombre.value,edad:edad.value,tipo:tipo.value,img:imagen.value||"https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=200"};
+  if(idx!=="") mascotas[idx]=m;
+  else mascotas.push(m);
+  localStorage.setItem("mascotas",JSON.stringify(mascotas));
+  formMascota.reset(); editIndex.value="";
+  render();
+}
+
+function render(){
+  const q=(buscar?.value||"").toLowerCase();
+  const filtradas=mascotas.filter(m=>m.nombre.toLowerCase().includes(q)||m.tipo.toLowerCase().includes(q));
+
+  statTotal.textContent=mascotas.length;
+  statGatos.textContent=mascotas.filter(m=>m.tipo.toLowerCase().includes("gato")).length;
+  statPerros.textContent=mascotas.filter(m=>m.tipo.toLowerCase().includes("perro")).length;
+
+  if(filtradas.length===0){
+    listaMascotas.innerHTML=`<div class="empty-state"><div class="icon">🐾</div><p>No hay mascotas aún.<br>¡Agrega la primera!</p></div>`;
+    return;
+  }
+  listaMascotas.innerHTML=filtradas.map((m,i)=>`
+    <div class="mascota-card">
+      <img src="${m.img}" onerror="this.src='https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=200'">
+      <div class="mascota-info" style="flex:1;">
+        <h5>${m.nombre}</h5>
+        <p>Edad: ${m.edad} años</p>
+        <span class="tag">${m.tipo}</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <button class="btn-sm" onclick="editarMascota(${i})">Editar</button>
+        <button class="btn-danger" onclick="eliminar(${i})">Eliminar</button>
+      </div>
+    </div>`).join("");
+}
+
+function editarMascota(i){
+  const m=mascotas[i];
+  nombre.value=m.nombre; edad.value=m.edad; tipo.value=m.tipo; imagen.value=m.img;
+  editIndex.value=i;
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function eliminar(i){
+  mascotas.splice(i,1);
+  localStorage.setItem("mascotas",JSON.stringify(mascotas));
+  render();
+}
+
+function mostrarCatalogo(){
+  catalogo.innerHTML=catalogoMascotas.map((m,i)=>`
+    <div class="mascota-card">
+      <img src="${m.img}">
+      <div class="mascota-info" style="flex:1;">
+        <h5>${m.nombre}</h5>
+        <p>${m.desc}</p>
+        <span class="tag">${m.tipo}</span>
+        <span class="tag vino">${m.edad} años</span>
+      </div>
+      <button class="btn-sm" onclick="irFormulario(${i})">Adoptar</button>
+    </div>`).join("");
+}
+
+function irFormulario(i){
+  mascotaSeleccionada=catalogoMascotas[i];
+  vista("formAdopcion");
+  mascotaSeleccionadaDiv.innerHTML=`
+    <img src="${mascotaSeleccionada.img}">
+    <div>
+      <h5 style="font-family:'Playfair Display';font-size:1.1rem;margin-bottom:4px;">${mascotaSeleccionada.nombre}</h5>
+      <p style="color:var(--texto-muted);font-size:0.85rem;">${mascotaSeleccionada.tipo} · ${mascotaSeleccionada.edad} años</p>
+    </div>`;
+}
+
+function enviarAdopcion(e){
+  e.preventDefault();
+  mascotas.push({...mascotaSeleccionada,img:mascotaSeleccionada.img});
+  localStorage.setItem("mascotas",JSON.stringify(mascotas));
+  alert("🎉 ¡Solicitud enviada! " + mascotaSeleccionada.nombre + " está esperando su nuevo hogar.");
+  vista("app"); render();
+}
+
 function mostrarRegistro(){
-loginSection.classList.add("oculto");
-registroSection.classList.remove("oculto");
+  loginSection.classList.add("oculto");
+  registroSection.classList.remove("oculto");
 }
-
 function mostrarLogin(){
-registroSection.classList.add("oculto");
-loginSection.classList.remove("oculto");
+  registroSection.classList.add("oculto");
+  loginSection.classList.remove("oculto");
 }
 
-// AUTO LOGIN
-if(localStorage.getItem("usuarioActivo")){
-iniciarApp();
-}
-
+if(localStorage.getItem("usuarioActivo")) iniciarApp();
 </script>
-
 </body>
 </html>
